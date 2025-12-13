@@ -1,5 +1,3 @@
-<?php // template/login-form.php ?>
-
 <h2>Login</h2>
 
 <?php if (!empty($templateParams["errorelogin"])): ?>

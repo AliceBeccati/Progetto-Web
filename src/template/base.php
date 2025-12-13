@@ -16,60 +16,64 @@ if (!isset($templateParams["titolo"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $templateParams["titolo"]; ?></title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+      crossorigin="anonymous">
 </head>
 
 <body class="bg-light">
 
-    <header class="bg-danger text-white py-3 mb-4 shadow-sm">
-        <div class="container text-center">
-            <h1 class="fw-bold">🍽 MensaMate</h1>
-            <p class="mb-0">Prenotazioni – Tavolate – Piatti del Giorno</p>
+    <header class="bg-danger text-white">
+        <div class="container py-3 text-center">
+            <h1 class="fw-bold mb-1">
+                🍽️ MensaMate
+            </h1>
+            <p class="mb-0 opacity-75">
+                La tua tavolata in compagnia
+            </p>
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
 
-            <a class="navbar-brand" href="index.php">Home</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <!-- Bottone mobile -->
+           <a class="navbar-brand d-lg-none fs-4" href="index.php" aria-label="Home">🏠</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Apri menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto">
+            <!-- Voci menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : ''; ?>"
-                           href="login.php">Login</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
 
-                    <?php if (isset($_SESSION["user"])) : ?>
-                        
-                        <?php if ($_SESSION["user"]["ruolo"] === "admin") : ?>
-                            <li class="nav-item">
-                                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'admin.php' ? 'active' : ''; ?>"
-                                   href="admin.php">Area Admin</a>
-                            </li>
-                        <?php else : ?>
-                            <li class="nav-item">
-                                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'utente.php' ? 'active' : ''; ?>"
-                                   href="utente.php">Area Utente</a>
-                            </li>
-                        <?php endif; ?>
+                    <li class="nav-item">
+                        <a class="nav-link " href="chi-siamo.php">Chi siamo</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" href="logout.php">Logout</a>
-                        </li>
-
-                    <?php endif; ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy.php">Privacy</a>
+                    </li>
 
                 </ul>
+
+                <!-- Bottone Login a destra -->
+                <div class="d-flex">
+                    <a href="login.php" class="btn btn-outline-light">
+                        Login
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
+
+
 
     <main class="container mb-5">
 
@@ -90,7 +94,9 @@ if (!isset($templateParams["titolo"])) {
         </div>
     </footer>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

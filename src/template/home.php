@@ -1,73 +1,84 @@
-<?php // template/home.php ?>
+<!-- HERO SECTION -->
+<section class="bg-light p-5 rounded shadow-sm mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1 class="fw-bold mb-3">🍽 TavolateDB</h1>
+                <p class="lead">
+                    TavolateDB è una piattaforma che ti permette di
+                    <strong>organizzare tavolate condivise</strong>,
+                    <strong>prenotare tavoli</strong> e
+                    <strong>scoprire il piatto del giorno</strong>.
+                </p>
+                <p>
+                    Che tu voglia pranzare in compagnia, partecipare a una tavolata tematica
+                    o semplicemente prenotare un tavolo, TavolateDB ti aiuta a farlo
+                    in modo semplice e veloce.
+                </p>
 
-<div class="row justify-content-center mb-4">
-    <nav class="col-10">
-        <ul class="nav nav-pills justify-content-center text-center">
-            <li class="nav-item col-md-3 col-6 px-2 py-2">
-                <a class="nav-link bg-danger text-white" href="login.php">Login</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<div class="row justify-content-center">
-    <div class="col-10">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 1</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
+                <a href="login.php" class="btn btn-danger btn-lg mt-3">
+                    🔐 Accedi / Login
+                </a>
             </div>
 
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/php.png" alt="">
-                        </div>
-                        <h2>Piatto 2</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
-
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 3</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
-
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 4</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
+            <div class="col-md-5 text-center">
+                <div class="p-4 bg-white border rounded shadow-sm">
+                    <h5 class="fw-bold mb-3">Perché usare TavolateDB?</h5>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2">✔ Prenota tavoli facilmente</li>
+                        <li class="mb-2">✔ Partecipa a tavolate tematiche</li>
+                        <li class="mb-2">✔ Scopri piatti del giorno</li>
+                        <li class="mb-2">✔ Filtra per preferenze alimentari</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<!-- SEZIONE FUNZIONALITÀ -->
+<section class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="p-4 h-100 bg-white border rounded shadow-sm">
+                <h4 class="fw-bold">👥 Tavolate</h4>
+                <p>
+                    Unisciti a tavolate già esistenti oppure creane una nuova
+                    scegliendo tema, data e numero di partecipanti.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="p-4 h-100 bg-white border rounded shadow-sm">
+                <h4 class="fw-bold">🪑 Prenotazioni</h4>
+                <p>
+                    Prenota il tuo tavolo in modo rapido,
+                    scegliendo orario e numero di posti disponibili.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="p-4 h-100 bg-white border rounded shadow-sm">
+                <h4 class="fw-bold">🍝 Piatti del Giorno</h4>
+                <p>
+                    Consulta il menù aggiornato e scopri i piatti disponibili,
+                    filtrandoli in base alle tue preferenze alimentari.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION FINALE -->
+<section class="bg-dark text-white p-4 rounded text-center">
+    <h3 class="fw-bold mb-3">Pronto a iniziare?</h3>
+    <p class="mb-3">
+        Effettua il login per accedere alla tua area personale
+        o per gestire tavolate e prenotazioni.
+    </p>
+    <a href="login.php" class="btn btn-outline-light btn-lg">
+        Vai al Login
+    </a>
+</section>
