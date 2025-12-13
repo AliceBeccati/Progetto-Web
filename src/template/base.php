@@ -63,7 +63,6 @@ if (!isset($templateParams["titolo"])) {
 
                 </ul>
 
-                <!-- Bottone Login a destra -->
                 <div class="d-flex">
                     <a href="login.php" class="btn btn-outline-light">
                         Login
