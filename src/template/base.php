@@ -65,7 +65,7 @@ if (!isset($templateParams["titolo"])) {
 
                 <div class="d-flex">
                     <a href="login.php" class="btn btn-outline-light">
-                        Login
+                        Logout
                     </a>
                 </div>
             </div>
