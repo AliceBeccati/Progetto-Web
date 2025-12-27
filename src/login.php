@@ -7,9 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    $user = $dbh->checkLogin($email, $password);
+    $loginResult = $dbh->checkLogin($email, $password);
 
-    if ($user) {
+    if (count($loginResult) > 0) {
+        $user = $loginResult[0];
         $_SESSION["user"] = $user;
         if ($user["ruolo"] === "admin") {
             header("Location: admin.php");

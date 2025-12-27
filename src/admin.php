@@ -1,8 +1,9 @@
 <?php
 require_once 'bootstrap.php';
 
-// if (!isset($_SESSION["user"]) || $_SESSION["user"]["ruolo"] !== "admin")
-$templateParams["titolo"] = "Area amministratore";
+// if (!isset($_SESSION["user"])) { header("Location: login.php"); exit; }
+
+$templateParams["titolo"] = "Area Amministrazione";
 $templateParams["nome"]   = "template/admin-home.php";
 
 require  __DIR__ . '/template/base.php';

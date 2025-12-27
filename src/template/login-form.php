@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;" 
-                                           type="email" id="email" name="email" required />
+                                        type="email" id="email" name="email" required />
                                 </div>
                             </div>
 
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;" 
-                                           type="password" id="password" name="password" required />
+                                        type="password" id="password" name="password" required />
                                 </div>
                             </div>
 
