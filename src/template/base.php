@@ -22,7 +22,7 @@ if (!isset($templateParams["titolo"])) {
     crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
+<body class="bg-light d-flex flex-column min-vh-100">
 
     <header class="bg-danger text-white">
         <div class="container py-3 text-center">
@@ -35,52 +35,52 @@ if (!isset($templateParams["titolo"])) {
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+    <?php if (isset($templateParams["titolo"]) && $templateParams["titolo"] === "Login"): ?>
 
-            <!-- Bottone mobile -->
-        <a class="navbar-brand d-lg-none fs-4" href="index.php" aria-label="Home">🏠</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Apri menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="bg-dark text-white text-center mb-4 py-2">
+                    <h2 class="fw-bold m-0">Login</h2>
+                </div>
+    <?php else: ?>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
 
-            <!-- Voci menu -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="navbar-brand d-lg-none fs-4" href="index.php" aria-label="Home">🏠</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Apri menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="chi-siamo.php">Chi siamo</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="privacy.php">Privacy</a>
-                    </li>
-
-                </ul>
-
-                <div class="d-flex">
-                    <a href="login.php" class="btn btn-outline-light">
-                        Logout
-                    </a>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chi-siamo.php">Chi siamo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="privacy.php">Privacy</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex">
+                        <a href="login.php" class="btn btn-outline-light">
+                            Logout
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    <?php endif; ?>
 
-
-
-    <main class="container mb-5">
+    <main class="container mb-4 flex-grow-1">
 
         <?php
         if (isset($templateParams["nome"])) {
             require($templateParams["nome"]);
         } else {
-            echo "<div class='alert alert-warning'>Nessun contenuto da mostrare.</div>";
+            echo "<div class='alert alert-warning mt-4'>Nessun contenuto da mostrare.</div>";
         }
         ?>
 

@@ -1,5 +1,3 @@
-<h2>Login</h2>
-
 <?php if (!empty($templateParams["errorelogin"])): ?>
     <div class="alert alert-danger">
         <?php echo $templateParams["errorelogin"]; ?>
