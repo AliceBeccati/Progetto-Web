@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $esitoRegistrazione = $dbh->registrazione($name, $bio, $email, $password);
 
     if ($esitoRegistrazione) {
-            header("Location: utente.php");
+            header("Location: login.php");
             exit;
     } else {
         $templateParams["errorelogin"] = "Registrazione fallita! Email già presente o errore tecnico.";
