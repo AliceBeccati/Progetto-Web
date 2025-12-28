@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-10">
-        <div class="row">
-            <div class="col-md-6 mb-4, mt-3">
+        <div class="row mt-3">
+            <div class="col-md-6 mb-4 ">
                 <article class="bg-white border p-4 h-100 d-flex flex-column">
                     <header>
                         <div class="text-center mb-3">
@@ -24,7 +24,7 @@
                 </article>
             </div>
 
-            <div class="col-md-6 mb-4, mt-3">
+            <div class="col-md-6 mb-4">
                 <article class="bg-white border p-4 h-100 d-flex flex-column">
                     <header>
                         <div class="text-center mb-3">
@@ -47,7 +47,7 @@
                 </article>
             </div>
 
-            <div class="col-md-6 mb-4, mt-3">
+            <div class="col-md-6 mb-4">
                 <article class="bg-white border p-4 h-100 d-flex flex-column">
                     <header>
                         <div class="text-center mb-3">
@@ -69,7 +69,7 @@
                     </footer>
                 </article>
             </div>
-            <div class="col-md-6 mb-4, mt-3">
+            <div class="col-md-6 mb-4">
                 <article class="bg-white border p-4 h-100 d-flex flex-column">
                     <header>
                         <div class="text-center mb-3">

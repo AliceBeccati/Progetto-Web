@@ -26,9 +26,9 @@ if (!isset($templateParams["titolo"])) {
 
     <header class="bg-danger text-white">
         <div class="container py-3 text-center">
-            <h1 class="fw-bold mb-1">
-                🍽️ MensaMate
-            </h1>
+            <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
+                <h1>🍽️ MensaMate</h1>
+            </a>
             <p class="mb-0 opacity-75">
                 La tua tavolata in compagnia
             </p>
@@ -70,6 +70,13 @@ if (!isset($templateParams["titolo"])) {
                                 Logout
                             </a>
                         </div>
+                        <?php /*
+                        <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg>
+</button>*/ ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -87,7 +94,32 @@ if (!isset($templateParams["titolo"])) {
         ?>
 
     </main>
+            <?php
+            /*
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
+            
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
 
+            <div class="offcanvas-body">
+                
+                <p>Benvenuto!</p>
+                <hr>
+                
+                <ul class="list-unstyled">
+                    <li class="mb-3"><a href="profilo.php" class="text-decoration-none text-dark fs-5">👤 Il mio Profilo</a></li>
+                    <li class="mb-3"><a href="ordini.php" class="text-decoration-none text-dark fs-5">📦 I miei Ordini</a></li>
+                    <li class="mb-3"><a href="impostazioni.php" class="text-decoration-none text-dark fs-5">⚙️ Impostazioni</a></li>
+                </ul>
+
+                <hr>
+                <a href="logout.php" class="btn btn-danger w-100">Logout</a>
+
+            </div>
+            </div>*/
+            ?>
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
             <p class="mb-1">MensaMate – Progetto Web</p>
