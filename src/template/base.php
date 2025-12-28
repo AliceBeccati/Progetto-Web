@@ -63,12 +63,14 @@ if (!isset($templateParams["titolo"])) {
                             <a class="nav-link" href="privacy.php">Privacy</a>
                         </li>
                     </ul>
-                    
-                    <div class="d-flex">
-                        <a href="login.php" class="btn btn-outline-light">
-                            Logout
-                        </a>
-                    </div>
+
+                    <?php if (isset($templateParams["titolo"]) && ($templateParams["titolo"] === "Area utente" || $templateParams["titolo"] === "Area Amministrazione")): ?>
+                        <div class="d-flex">
+                            <a href="login.php" class="btn btn-outline-light">
+                                Logout
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
