@@ -33,7 +33,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($email, $password){
-        $query = "SELECT email, name, ruolo
+        $query = "SELECT *
                 FROM UTENTE
                 WHERE email = ? AND password = ?";
 
@@ -52,13 +52,11 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssss', $email, $name, $password, $bio);
 
-        // --- MODIFICA QUI ---
+
         try {
-            // Prova ad eseguire
+
             return $stmt->execute();
         } catch (Exception $e) {
-            // Se c'è un errore (es. email duplicata), lo "catturiamo" qui
-            // e restituiamo false invece di far crashare il sito con Errore 500
             return false;
         }
     }

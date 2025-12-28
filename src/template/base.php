@@ -16,10 +16,11 @@ if (!isset($templateParams["titolo"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $templateParams["titolo"]; ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-light d-flex flex-column min-vh-100">
@@ -67,8 +68,8 @@ if (!isset($templateParams["titolo"])) {
                     <?php if (isset($templateParams["titolo"]) && ($templateParams["titolo"] === "Area utente" || $templateParams["titolo"] === "Area Amministrazione")): ?>
     
                         <div class="d-flex align-items-center gap-4 ms-auto">
-                            <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente">
-                                x
+                            <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
+                                <i class="bi bi-person-circle fs-4"></i>
                             </button>
                         </div>
                     <?php endif; ?>
@@ -89,17 +90,22 @@ if (!isset($templateParams["titolo"])) {
 
     </main>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
-    
+    <div class="bg-light offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
-            
-            <p>Benvenuto!</p>
-            <a href="login.php" class="btn btn-danger w-100">Logout</a>
+        
+            <?php
+                if(isset($_SESSION["user"])) {
+                    require __DIR__ . '/sidebar-utente.php';
+                } else {
+                    echo "<p>Effettua il login per vedere i tuoi dati.</p>";
+                }
+            ?>
+
         </div>
     </div>
     
