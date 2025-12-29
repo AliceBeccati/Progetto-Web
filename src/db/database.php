@@ -104,7 +104,7 @@ class DatabaseHelper{
                 WHERE id_piatto = ?";
 
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('ssii', $nome, $descrizione, $prezzo, $id);
+            $stmt->bind_param('ssdi', $nome, $descrizione, $prezzo, $id);
 
     return $stmt->execute();
 }

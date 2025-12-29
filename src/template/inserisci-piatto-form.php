@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;"
-                                        type="number" id="prezzo" name="prezzo" required />
+                                        type="number" step="0.01" id="prezzo" name="prezzo" required />
                                 </div>
                             </div>
 
