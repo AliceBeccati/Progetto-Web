@@ -3,16 +3,16 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-7">
-                <h1 class="fw-bold mb-3">🍽 TavolateDB</h1>
+                <h1 class="fw-bold mb-3">MensaMate</h1>
                 <p class="lead">
-                    TavolateDB è una piattaforma che ti permette di
+                MensaMate è una piattaforma che ti permette di
                     <strong>organizzare tavolate condivise</strong>,
                     <strong>prenotare tavoli</strong> e
                     <strong>scoprire il piatto del giorno</strong>.
                 </p>
                 <p>
                     Che tu voglia pranzare in compagnia, partecipare a una tavolata tematica
-                    o semplicemente prenotare un tavolo, TavolateDB ti aiuta a farlo
+                    o semplicemente prenotare un tavolo, MensaMate ti aiuta a farlo
                     in modo semplice e veloce.
                 </p>
 
@@ -23,7 +23,7 @@
 
             <div class="col-md-5 text-center">
                 <div class="p-4 bg-white border rounded shadow-sm">
-                    <h5 class="fw-bold mb-3">Perché usare TavolateDB?</h5>
+                    <h5 class="fw-bold mb-3">Perché usare MensaMate?</h5>
                     <ul class="list-unstyled text-start">
                         <li class="mb-2">✔ Prenota tavoli facilmente</li>
                         <li class="mb-2">✔ Partecipa a tavolate tematiche</li>

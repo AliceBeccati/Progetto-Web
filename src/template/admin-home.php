@@ -3,8 +3,8 @@
         
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
             <h2 class="fw-bold">Gestione Menu</h2>
-            <a href="inserisci-piatto.php" class="btn btn-success shadow-sm">
-                <i class="bi bi-plus-circle-fill"></i> Aggiungi Nuovo Piatto
+            <a href="inserisci-piatto.php" class="btn btn-danger">
+                <i class=" bi bi-plus-circle-fill"></i> Aggiungi Nuovo Piatto
             </a>
         </div>
 
@@ -30,7 +30,7 @@
                         
                         <footer class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center">
                             
-                            <a href="modifica-piatto.php?id=<?php echo $piatto['id_piatto']; ?>" class="btn btn-sm btn-warning">
+                            <a href="modifica-piatto.php?id=<?php echo $piatto['id_piatto']; ?>" class="btn btn-sm btn-outline-dark">
                                 <i class="bi bi-pencil-square"></i> Modifica
                             </a>
 
