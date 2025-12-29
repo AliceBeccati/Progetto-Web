@@ -52,6 +52,15 @@ if (!isset($templateParams["titolo"])) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <?php if (isset($templateParams["titolo"]) && ($templateParams["titolo"] === "Area utente" || $templateParams["titolo"] === "Area Amministrazione")): ?>
+
+                    <div class="d-flex align-items-center gap-4 ms-auto">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtente" aria-controls="menuUtente">
+                            <i class="bi bi-person-circle fs-4"></i>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -90,6 +99,7 @@ if (!isset($templateParams["titolo"])) {
 
     </main>
 
+    <!-- Offcanvas menu utente -->
     <div class="bg-light offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h5>

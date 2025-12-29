@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $emailAdmin = $_SESSION["user"]["email"];
 
     $esitoInserimento = $dbh->inserisciPiatto($nome, $descrizione, $prezzo, $foto, $emailAdmin);
+    
     if ($esitoInserimento) {
         header("Location: admin.php");
         exit;

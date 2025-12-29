@@ -1,6 +1,5 @@
 <div class="row justify-content-center">
     <div class="col-10">
-        
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
             <h2 class="fw-bold">Gestione Menu</h2>
             <a href="inserisci-piatto.php" class="btn btn-danger">
@@ -10,7 +9,6 @@
 
         <div class="row">
             <?php
-            // Controllo se ci sono piatti
             if(isset($templateParams["piatti"]) && count($templateParams["piatti"]) > 0):
                 foreach ($templateParams["piatti"] as $piatto):
             ?>
@@ -55,7 +53,11 @@
                         Non ci sono ancora piatti nel menu. Clicca su "Aggiungi" per iniziare!
                     </div>
                 </div>
-            <?php endif; ?>
+            <?php
+            endif;
+            ?>
+
+            <!-- creazione modal modifica piatto -->
             <div class="modal fade" id="modalModifica" tabindex="-1" aria-labelledby="modalModificaLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -94,11 +96,15 @@
     </div>
 </div>
 
+<!-- Script per sapere il modal a che piatto si riferisce, devo passare id_piatto -->
 <script>
-const modalModifica = document.getElementById('modalModifica')
-modalModifica.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget
-    const id = button.getAttribute('data-bs-id')
-    modalModifica.querySelector('#edit-id').value = id
-})
+    const modalModifica = document.getElementById('modalModifica')
+    // 'show.bs.modal' è un evento specifico di Bootstrap che si attiva quando
+    // clicchi sul bottone Modifica, ma prima che la finestra sia visibile
+    modalModifica.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget
+        // estraggo l'id del piatto dal data-bs-id del bottone nascosto
+        const id = button.getAttribute('data-bs-id')
+        modalModifica.querySelector('#edit-id').value = id
+    })
 </script>
