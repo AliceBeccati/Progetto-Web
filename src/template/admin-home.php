@@ -30,9 +30,10 @@
                         
                         <footer class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center">
                             
-                            <a href="modifica-piatto.php?id=<?php echo $piatto['id_piatto']; ?>" class="btn btn-sm btn-outline-dark">
-                                <i class="bi bi-pencil-square"></i> Modifica
-                            </a>
+                            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalModifica"
+                                    data-bs-id="<?php echo $piatto['id_piatto']; ?>">
+                                Modifica
+                            </button>
 
                             <form action="admin.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare <?php echo $piatto['nome']; ?>?');">
                                 <input type="hidden" name="id_piatto" value="<?php echo $piatto['id_piatto']; ?>">
@@ -55,7 +56,49 @@
                     </div>
                 </div>
             <?php endif; ?>
+            <div class="modal fade" id="modalModifica" tabindex="-1" aria-labelledby="modalModificaLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title">Modifica Piatto</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="admin.php" method="POST" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <input type="hidden" name="azione" value="modifica">
+                                
+                                <input type="hidden" name="id_piatto" id="edit-id">
+
+                                <div class="mb-3">
+                                    <label for="edit-nome" class="form-label">Nome Piatto</label>
+                                    <input type="text" class="form-control" id="edit-nome" name="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-desc" class="form-label">Descrizione</label>
+                                    <textarea class="form-control" id="edit-desc" name="descrizione" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-prezzo" class="form-label">Prezzo (€)</label>
+                                    <input type="number" step="0.01" class="form-control" id="edit-prezzo" name="prezzo" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">Salva Modifiche</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         
     </div>
 </div>
+
+<script>
+const modalModifica = document.getElementById('modalModifica')
+modalModifica.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const id = button.getAttribute('data-bs-id')
+    modalModifica.querySelector('#edit-id').value = id
+})
+</script>

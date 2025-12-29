@@ -13,7 +13,6 @@ class DatabaseHelper{
             throw new Exception("Certificato CA non trovato in: " . $caPath);
         }
 
-        // Attivo SSL
         if (!$this->db->ssl_set(null, null, $caPath, null, null)) {
             throw new Exception("Impossibile impostare SSL per mysqli");
         }
@@ -99,6 +98,16 @@ class DatabaseHelper{
         }
         
     }
+
+    public function updatePiatto($id, $nome, $descrizione, $prezzo) {
+            $query = "UPDATE PIATTO_DEL_GIORNO SET nome = ?, descrizione = ?, prezzo = ?
+                WHERE id_piatto = ?";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ssii', $nome, $descrizione, $prezzo, $id);
+
+    return $stmt->execute();
+}
 
 }
 ?>
