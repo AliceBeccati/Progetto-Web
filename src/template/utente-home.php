@@ -1,61 +1,37 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <div class="row mt-3">
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 1</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
+            <?php
 
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/php.png" alt="">
-                        </div>
-                        <h2>Piatto 2</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
+            if(isset($templateParams["piatti"]) && count($templateParams["piatti"]) > 0):
+                foreach ($templateParams["piatti"] as $piatto):
+            ?>
+                <div class="col-md-6 mb-4">
+                    <article class="bg-white border p-4 h-100">
+                        <header>
+                            <div class="text-center mb-3">
+                                <img src="img/<?php echo $piatto['foto']; ?>" alt="<?php echo $piatto['nome']; ?>" style="max-height: 150px; object-fit: cover; width: 100%;">
+                            </div>
+                            <h2 class="h4"><?php echo $piatto['nome']; ?></h2>
+                        </header>
 
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 3</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
-
-            <div class="col-md-6 mb-4">
-                <article class="bg-white border p-4 h-100">
-                    <header>
-                        <div class="text-center">
-                            <img src="img/html5-js-css3.png" alt="">
-                        </div>
-                        <h2>Piatto 4</h2>
-                    </header>
-                    <section>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    </section>
-                </article>
-            </div>
+                        <section class="flex-grow-1">
+                            <p class="text-muted"><?php echo $piatto['descrizione']; ?></p>
+                            <p class="fw-bold text-danger fs-5">€ <?php echo $piatto['prezzo']; ?></p>
+                        </section>
+                    </article>
+                </div>
+            <?php
+                endforeach;
+            else:
+            ?>
+                <div class="col-12">
+                    <div class="alert alert-warning text-center">
+                        Non ci sono ancora piatti nel menu. Clicca su "Aggiungi" per iniziare!
+                    </div>
+                </div>
+            <?php endif;
+            ?>
         </div>
     </div>
 </div>

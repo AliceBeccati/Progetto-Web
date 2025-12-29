@@ -61,8 +61,44 @@ class DatabaseHelper{
         }
     }
 
+    public function inserisciPiatto($nome, $descrizione, $prezzo, $foto, $emailAdmin){
+        $query = "INSERT INTO PIATTO_DEL_GIORNO (nome, descrizione, prezzo, foto, emailAdmin)
+                VALUES (?, ?, ?, ?, ?)";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $foto, $emailAdmin);
 
+        try {
+            return $stmt->execute();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 
+    public function getPiatto(){
+        $query = "SELECT *
+                FROM PIATTO_DEL_GIORNO";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deletePiatto($id){
+        $query = "DELETE FROM PIATTO_DEL_GIORNO
+                WHERE id_piatto = ?";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        try {
+            return $stmt->execute();
+        } catch (Exception $e) {
+            return false;
+        }
+        
+    }
 
 }
 ?>
