@@ -16,8 +16,8 @@
                     in modo semplice e veloce.
                 </p>
 
-                <a href="login.php" class="btn btn-danger btn-lg mt-3">
-                    🔐 Accedi / Login
+                <a href="accedi.php" class="btn btn-danger btn-lg mt-3">
+                    🔐 Accedi
                 </a>
             </div>
 

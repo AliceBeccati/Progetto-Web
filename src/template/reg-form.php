@@ -15,7 +15,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <label class="form-label" for="name">Nome e Cognome</label>
+                                    <label class="form-label" for="name">Nickname</label>
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;"

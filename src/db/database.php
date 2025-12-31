@@ -109,5 +109,85 @@ class DatabaseHelper{
     return $stmt->execute();
 }
 
+public function getTavolate(){
+    $query = "
+        SELECT
+            t.id_tavolata,
+            t.stato,
+            t.ora,
+            t.titolo,
+            COUNT(DISTINCT p_all.email) AS num_persone_partecipanti,
+            t.max_persone,
+            u.name AS organizzatore
+        FROM TAVOLATA t
+        LEFT JOIN PARTECIPAZIONE p_all
+               ON p_all.id_tavolata = t.id_tavolata
+        LEFT JOIN PARTECIPAZIONE p_org
+               ON p_org.id_tavolata = t.id_tavolata
+              AND p_org.ruolo = 'organizzatore'
+        LEFT JOIN UTENTE u
+               ON u.email = p_org.email
+        WHERE t.data = CURDATE()
+        GROUP BY
+            t.id_tavolata, t.stato, t.ora, t.titolo, t.max_persone, u.name
+        ORDER BY t.ora
+    ";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+public function partecipaTavolata(int $idTavolata, string $email): bool {
+    $this->db->begin_transaction();
+
+    try {
+        // Inserimento partecipazione utente
+        $qIns = "
+            INSERT INTO PARTECIPAZIONE (id_tavolata, email, ruolo)
+            SELECT t.id_tavolata, ?, 'ospite'
+            FROM TAVOLATA t
+            WHERE t.id_tavolata = ?
+              AND LOWER(t.stato) = 'aperta'
+              AND NOT EXISTS (
+                  SELECT 1 FROM PARTECIPAZIONE p
+                  WHERE p.id_tavolata = t.id_tavolata AND p.email = ?
+              )
+              AND (SELECT COUNT(*) FROM PARTECIPAZIONE p2
+                   WHERE p2.id_tavolata = t.id_tavolata) < t.max_persone
+        ";
+        $stmt = $this->db->prepare($qIns);
+        $stmt->bind_param("sis", $email, $idTavolata, $email);
+        $stmt->execute();
+
+        if ($stmt->affected_rows === 0) {
+            $this->db->rollback();
+            return false;
+        }
+
+        // Se dopo l'inserimento è piena => chiude
+        $qClose = "
+            UPDATE TAVOLATA t
+            SET t.stato = 'chiusa'
+            WHERE t.id_tavolata = ?
+              AND (SELECT COUNT(*) FROM PARTECIPAZIONE p
+                   WHERE p.id_tavolata = t.id_tavolata) >= t.max_persone
+        ";
+        $stmt2 = $this->db->prepare($qClose);
+        $stmt2->bind_param("i", $idTavolata);
+        $stmt2->execute();
+
+        $this->db->commit();
+        return true;
+
+    } catch (\Throwable $e) {
+        $this->db->rollback();
+        return false;
+    }
+}
+
+
+
 }
 ?>
