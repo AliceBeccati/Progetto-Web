@@ -53,7 +53,7 @@ if (!isset($templateParams["titolo"])) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <?php if (isset($templateParams["titolo"]) && ($templateParams["titolo"] === "Area utente" || $templateParams["titolo"] === "Area Amministrazione")): ?>
+                <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
 
                     <div class="d-flex align-items-center gap-4 ms-auto">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtente" aria-controls="menuUtente">
@@ -64,9 +64,40 @@ if (!isset($templateParams["titolo"])) {
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
-                        </li>
+                        <?php
+                            // navbar utente
+                            if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user")){
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="utente.php">DashBoard</a>
+                                      </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="prenotazioni.php">Prenotazioni</a>
+                                      </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="tavolate.php">Tavolate</a>
+                                      </li>';
+                            }
+
+                            // navbar admin
+                            if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "admin")){
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="admin.php">DashBoard</a>
+                                      </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="tavoli.php">Tavoli</a>
+                                      </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="gestioneSala.php">Sala</a>
+                                      </li>';
+                            }
+                            // navbar pubblica (home)
+                            if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "public")){
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="utente.php">Home</a>
+                                      </li>';
+                            }
+                            
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="chi-siamo.php">Chi siamo</a>
                         </li>
@@ -75,7 +106,7 @@ if (!isset($templateParams["titolo"])) {
                         </li>
                     </ul>
 
-                    <?php if (isset($templateParams["titolo"]) && ($templateParams["titolo"] === "Area utente" || $templateParams["titolo"] === "Area Amministrazione")): ?>
+                    <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
     
                         <div class="d-flex align-items-center gap-4 ms-auto">
                             <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">

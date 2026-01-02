@@ -3,7 +3,7 @@
     <div class="border bg-white p-4 h-100">
       <h3 class="h5 mb-2">Crea una tavolata</h3>
       <p class="text-muted mb-3">Organizza un gruppo e condividi il codice con gli amici.</p>
-      <a class="btn btn-primary" href="crea-tavolata.php">Crea tavolata</a>
+      <a class="btn btn-primary" href="tavolate.php">Crea tavolata</a>
     </div>
   </div>
 
@@ -43,7 +43,13 @@
               <?php
                 $aperta = (strtolower($tavolata["stato"]) === "aperta");
                 $pieni  = ((int)$tavolata["num_persone_partecipanti"] >= (int)$tavolata["max_persone"]);
-                $puoiPartecipare = $aperta && !$pieni;
+                $giaDentro = ((int)$tavolata["gia_partecipa"] === 1);
+
+                // se stai usando anche mio_ruolo nella query:
+                $mioRuolo = strtolower($tavolata["mio_ruolo"] ?? "");
+                $puoiAnnullare = $giaDentro && ($mioRuolo !== "organizzatore");
+
+                $puoiPartecipare = $aperta && !$pieni && !$giaDentro;
               ?>
               <tr>
                 <td class="fw-semibold"><?php echo $tavolata["titolo"]; ?></td>
@@ -55,12 +61,22 @@
                 <td class="text-end">
                   <?php if($puoiPartecipare): ?>
                     <a class="btn btn-sm btn-dark"
-                       href="partecipa-tavolata.php?id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
+                       href="partecipazione-tavolata.php?action=join&id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
                       Partecipa
                     </a>
+
+                  <?php elseif($puoiAnnullare): ?>
+                    <a class="btn btn-sm btn-outline-danger"
+                       href="partecipazione-tavolata.php?action=leave&id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
+                      Annulla
+                    </a>
+
                   <?php else: ?>
                     <button class="btn btn-sm btn-outline-secondary" disabled>
-                      <?php echo $pieni ? "Piena" : "Chiusa"; ?>
+                      <?php
+                        if ($giaDentro) echo "Già dentro";
+                        else echo ($pieni ? "Piena" : "Chiusa");
+                      ?>
                     </button>
                   <?php endif; ?>
                 </td>
@@ -76,7 +92,12 @@
           <?php
             $aperta = (strtolower($tavolata["stato"]) === "aperta");
             $pieni  = ((int)$tavolata["num_persone_partecipanti"] >= (int)$tavolata["max_persone"]);
-            $puoiPartecipare = $aperta && !$pieni;
+            $giaDentro = ((int)$tavolata["gia_partecipa"] === 1);
+
+            $mioRuolo = strtolower($tavolata["mio_ruolo"] ?? "");
+            $puoiAnnullare = $giaDentro && ($mioRuolo !== "organizzatore");
+
+            $puoiPartecipare = $aperta && !$pieni && !$giaDentro;
           ?>
           <div class="border bg-white p-3 mb-3">
             <div class="d-flex justify-content-between align-items-start gap-2">
@@ -102,12 +123,22 @@
             <div class="mt-3">
               <?php if($puoiPartecipare): ?>
                 <a class="btn btn-dark btn-sm w-100"
-                   href="partecipa-tavolata.php?id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
+                   href="partecipazione-tavolata.php?action=join&id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
                   Partecipa
                 </a>
+
+              <?php elseif($puoiAnnullare): ?>
+                <a class="btn btn-outline-danger btn-sm w-100"
+                   href="partecipazione-tavolata.php?action=leave&id_tavolata=<?php echo (int)$tavolata["id_tavolata"]; ?>">
+                  Annulla
+                </a>
+
               <?php else: ?>
                 <button class="btn btn-outline-secondary btn-sm w-100" disabled>
-                  <?php echo $pieni ? "Piena" : "Chiusa"; ?>
+                  <?php
+                    if ($giaDentro) echo "Già dentro";
+                    else echo ($pieni ? "Piena" : "Chiusa");
+                  ?>
                 </button>
               <?php endif; ?>
             </div>
@@ -126,34 +157,52 @@
 <!-- PIATTI -->
 <div class="row justify-content-center">
   <div class="col-10">
-    <div class="row mt-3">
-      <?php if(isset($templateParams["piatti"]) && count($templateParams["piatti"]) > 0): ?>
-        <?php foreach ($templateParams["piatti"] as $piatto): ?>
-          <div class="col-md-6 mb-4">
-            <article class="bg-white border p-4 h-100">
-              <header>
-                <div class="text-center mb-3">
-                  <img src="img/<?php echo $piatto['foto']; ?>"
-                       alt="<?php echo $piatto['nome']; ?>"
-                       style="max-height: 150px; object-fit: cover; width: 100%;">
-                </div>
-                <h2 class="h4"><?php echo $piatto['nome']; ?></h2>
-              </header>
 
-              <section class="flex-grow-1">
-                <p class="text-muted"><?php echo $piatto['descrizione']; ?></p>
-                <p class="fw-bold text-danger fs-5">€ <?php echo $piatto['prezzo']; ?></p>
-              </section>
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+      <h2 class="h5 mb-0">Piatti del giorno</h2>
+    </div>
+
+    <?php if(isset($templateParams["piatti"]) && count($templateParams["piatti"]) > 0): ?>
+      <div class="dish-slider">
+        <?php foreach ($templateParams["piatti"] as $piatto): ?>
+          <div class="dish-card">
+            <article class="bg-white border p-3 h-100">
+              <div class="mb-2">
+                <img src="img/<?php echo $piatto['foto']; ?>"
+                     alt="<?php echo $piatto['nome']; ?>"
+                     class="w-100"
+                     style="height:140px; object-fit:cover;">
+              </div>
+
+              <div class="fw-semibold"><?php echo $piatto['nome']; ?></div>
+              <div class="text-muted small"><?php echo $piatto['descrizione']; ?></div>
+              <div class="fw-bold text-danger mt-2">€ <?php echo $piatto['prezzo']; ?></div>
             </article>
           </div>
         <?php endforeach; ?>
-      <?php else: ?>
-        <div class="col-12">
-          <div class="alert alert-warning text-center">
-            Non ci sono ancora piatti nel menu.
-          </div>
-        </div>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php else: ?>
+      <div class="alert alert-warning text-center mt-3">
+        Non ci sono ancora piatti nel menu.
+      </div>
+    <?php endif; ?>
+
   </div>
 </div>
+
+<style>
+  .dish-slider{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 4px 12px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .dish-card{
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+</style>

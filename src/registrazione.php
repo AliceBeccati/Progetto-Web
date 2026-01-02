@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($esitoRegistrazione) {
             header("Location: login.php");
-            exit;
     } else {
         $templateParams["errorelogin"] = "Registrazione fallita! Email già presente o errore tecnico.";
     }

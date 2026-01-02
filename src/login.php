@@ -2,6 +2,7 @@
 require_once 'bootstrap.php';
 
 $templateParams["titolo"] = "Login";
+$templateParams["navbar"] = "public";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = $_POST["email"] ?? "";
@@ -17,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             header("Location: utente.php");
         }
-        exit;
     } else {
         $templateParams["errorelogin"] = "Credenziali non valide.";
     }

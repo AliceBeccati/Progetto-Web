@@ -1,6 +1,10 @@
 <?php
 require_once 'bootstrap.php';
 
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+}
+
 $templateParams["titolo"] = "Inserisci Nuovo Piatto";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -15,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     if ($esitoInserimento) {
         header("Location: admin.php");
-        exit;
     } else {
         $templateParams["errorelogin"] = "Inserimento piatto fallito! Errore tecnico.";
     }

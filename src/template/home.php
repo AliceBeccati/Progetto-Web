@@ -16,7 +16,7 @@
                     in modo semplice e veloce.
                 </p>
 
-                <a href="accedi.php" class="btn btn-danger btn-lg mt-3">
+                <a href="gestioneLogin.php" class="btn btn-danger btn-lg mt-3">
                     🔐 Accedi
                 </a>
             </div>
@@ -78,7 +78,7 @@
         Effettua il login per accedere alla tua area personale
         o per gestire tavolate e prenotazioni.
     </p>
-    <a href="login.php" class="btn btn-outline-light btn-lg">
+    <a href="gestioneLogin.php" class="btn btn-outline-light btn-lg">
         Vai al Login
     </a>
 </section>

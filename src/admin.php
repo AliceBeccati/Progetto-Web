@@ -4,11 +4,11 @@ require_once 'bootstrap.php';
 
 if (!isset($_SESSION["user"]) || $_SESSION["user"]["ruolo"] != "admin") {
     header("Location: login.php");
-    exit;
 }
 
 $templateParams["titolo"] = "Area Amministrazione";
 $templateParams["nome"] = "template/admin-home.php";
+$templateParams["navbar"] = "admin";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
