@@ -1,17 +1,54 @@
 .dish-slider{
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 8px 4px 12px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;   /* invece di auto: forza la scrollbar quando possibile */
+  overflow-y: hidden;
+  padding-bottom: 14px; /* spazio per la barra */
 }
 
-.dish-card{
-  flex: 0 0 260px;          /* larghezza card */
-  scroll-snap-align: start;
-}
-
+/* Chrome/Edge/Safari */
 .dish-slider::-webkit-scrollbar{
-  height: 8px;
+  height: 14px;
+}
+.dish-slider::-webkit-scrollbar-track{
+  background: #e9ecef;
+  border-radius: 999px;
+}
+.dish-slider::-webkit-scrollbar-thumb{
+  background: #adb5bd;
+  border-radius: 999px;
+  border: 3px solid #e9ecef;
+}
+.dish-slider::-webkit-scrollbar-thumb:hover{
+  background: #868e96;
+}
+
+/* Firefox */
+.dish-slider{
+  scrollbar-width: auto;
+  scrollbar-color: #adb5bd #e9ecef;
+}
+#piattiCarousel .carousel-control-prev,
+#piattiCarousel .carousel-control-next{
+  width: 10%;
+  opacity: 1;
+}
+
+#piattiCarousel .carousel-control-prev-icon,
+#piattiCarousel .carousel-control-next-icon{
+  width: 2.2rem;
+  height: 2.2rem;
+  background-size: 70% 70%;
+  border-radius: 999px;
+  padding: 18px;
+  background-color: rgba(0,0,0,.55);
+}
+
+#piattiCarousel .carousel-control-prev:hover .carousel-control-prev-icon,
+#piattiCarousel .carousel-control-next:hover .carousel-control-next-icon{
+  background-color: rgba(0,0,0,.75);
+}
+
+#piattiCarousel .carousel-indicators [data-bs-target]{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
 }

@@ -154,7 +154,7 @@
   </div>
 </div>
 
-<!-- PIATTI -->
+<!-- PIATTI DEL GIORNO - BOOTSTRAP CAROUSEL (solo HTML/PHP, niente CSS) -->
 <div class="row justify-content-center">
   <div class="col-10">
 
@@ -163,24 +163,66 @@
     </div>
 
     <?php if(isset($templateParams["piatti"]) && count($templateParams["piatti"]) > 0): ?>
-      <div class="dish-slider">
-        <?php foreach ($templateParams["piatti"] as $piatto): ?>
-          <div class="dish-card">
-            <article class="bg-white border p-3 h-100">
-              <div class="mb-2">
-                <img src="img/<?php echo $piatto['foto']; ?>"
-                     alt="<?php echo $piatto['nome']; ?>"
-                     class="w-100"
-                     style="height:140px; object-fit:cover;">
-              </div>
+      <?php
+        $piatti = $templateParams["piatti"];
+        $perSlide = 3; // quante card per slide (desktop)
+        $chunks = array_chunk($piatti, $perSlide);
+      ?>
 
-              <div class="fw-semibold"><?php echo $piatto['nome']; ?></div>
-              <div class="text-muted small"><?php echo $piatto['descrizione']; ?></div>
-              <div class="fw-bold text-danger mt-2">€ <?php echo $piatto['prezzo']; ?></div>
-            </article>
+      <div id="piattiCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+        <?php if(count($chunks) > 1): ?>
+          <div class="carousel-indicators">
+            <?php for($i=0; $i<count($chunks); $i++): ?>
+              <button type="button"
+                      data-bs-target="#piattiCarousel"
+                      data-bs-slide-to="<?php echo $i; ?>"
+                      class="<?php echo ($i===0 ? 'active' : ''); ?>"
+                      aria-label="Slide <?php echo $i+1; ?>"></button>
+            <?php endfor; ?>
           </div>
-        <?php endforeach; ?>
+        <?php endif; ?>
+
+        <div class="carousel-inner">
+
+          <?php foreach($chunks as $i => $group): ?>
+            <div class="carousel-item <?php echo ($i === 0 ? 'active' : ''); ?>">
+              <div class="row g-3">
+                <?php foreach($group as $piatto): ?>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <article class="bg-white border p-3 h-100">
+                      <div class="mb-2">
+                        <img src="img/<?php echo $piatto['foto']; ?>"
+                             alt="<?php echo $piatto['nome']; ?>"
+                             class="w-100"
+                             style="height:140px; object-fit:cover;">
+                      </div>
+
+                      <div class="fw-semibold"><?php echo $piatto['nome']; ?></div>
+                      <div class="text-muted small"><?php echo $piatto['descrizione']; ?></div>
+                      <div class="fw-bold text-danger mt-2">€ <?php echo $piatto['prezzo']; ?></div>
+                    </article>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          <?php endforeach; ?>
+
+        </div>
+
+        <?php if(count($chunks) > 1): ?>
+          <button class="carousel-control-prev" type="button" data-bs-target="#piattiCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Precedente</span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#piattiCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Successivo</span>
+          </button>
+        <?php endif; ?>
+
       </div>
+
     <?php else: ?>
       <div class="alert alert-warning text-center mt-3">
         Non ci sono ancora piatti nel menu.
@@ -190,19 +232,3 @@
   </div>
 </div>
 
-<style>
-  .dish-slider{
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 8px 4px 12px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-  .dish-card{
-    flex: 0 0 260px;
-    scroll-snap-align: start;
-  }
-</style>

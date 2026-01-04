@@ -279,6 +279,86 @@ public function aggiornaTavolata(int $idTavolata, string $titolo, string $data, 
     return $st->execute();
 }
 
+public function creaPrenotazioneOggi(string $email, string $oraInizio, int $posti) {
+
+    $oraFine = 
+
+    // 1) Trovo un tavolo disponibile con posti >= richiesti e non occupato nell'intervallo
+    $qTavolo = "
+        SELECT t.id_tavolo
+        FROM TAVOLO t
+        WHERE t.posti >= ?
+          AND NOT EXISTS (
+              SELECT 1
+              FROM RISERVA r
+              JOIN PRENOTAZIONE p ON p.id_prenotazione = r.id_prenotazione
+              WHERE r.id_tavolo = t.id_tavolo
+                AND p.data = CURDATE()
+                AND NOT (p.ora_fine <= ? OR p.ora_inizio >= ?)
+          )
+        ORDER BY t.posti ASC, t.id_tavolo ASC
+        LIMIT 1
+    ";
+    $st = $this->db->prepare($qTavolo);
+    $st->bind_param("iss", $posti, $oraInizio, $oraFine);
+    $st->execute();
+    $res = $st->get_result();
+    if ($res->num_rows === 0) return false;
+
+    $idTavolo = (int)$res->fetch_assoc()["id_tavolo"];
+
+    // 2) Inserisco prenotazione
+    $qInsPren = "
+        INSERT INTO PRENOTAZIONE (data, ora_inizio, ora_fine, n_posti, stato)
+        VALUES (CURDATE(), ?, ?, ?, 'confermata')
+    ";
+    $st2 = $this->db->prepare($qInsPren);
+    $st2->bind_param("ssi", $oraInizio, $oraFine, $posti);
+    if (!$st2->execute()) return false;
+
+    $idPren = (int)$this->db->insert_id;
+
+    // 3) Collego tavolo
+    $qRis = "INSERT INTO RISERVA (id_prenotazione, id_tavolo) VALUES (?, ?)";
+    $st3 = $this->db->prepare($qRis);
+    $st3->bind_param("ii", $idPren, $idTavolo);
+    if (!$st3->execute()) return false;
+
+    // 4) Collego utente
+    $qEff = "INSERT INTO EFFETTUA (id_prenotazione, email) VALUES (?, ?)";
+    $st4 = $this->db->prepare($qEff);
+    $st4->bind_param("is", $idPren, $email);
+    if (!$st4->execute()) return false;
+
+    return true;
+}
+
+public function getPrenotazioniOggi(string $email): array {
+    $q = "
+        SELECT
+          p.id_prenotazione,
+          p.data,
+          p.ora_inizio,
+          p.ora_fine,
+          p.n_posti,
+          p.stato,
+          t.id_tavolo,
+          t.posti AS posti_tavolo
+        FROM PRENOTAZIONE p
+        JOIN EFFETTUA e ON e.id_prenotazione = p.id_prenotazione
+        JOIN RISERVA r ON r.id_prenotazione = p.id_prenotazione
+        JOIN TAVOLO t ON t.id_tavolo = r.id_tavolo
+        WHERE p.data = CURDATE()
+          AND e.email = ?
+        ORDER BY p.ora_inizio
+    ";
+    $st = $this->db->prepare($q);
+    $st->bind_param("s", $email);
+    $st->execute();
+    return $st->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+
 
 }
 ?>
