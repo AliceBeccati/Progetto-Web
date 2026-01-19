@@ -17,7 +17,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <label class="form-label" for="ora_inizio">Ora di inizio</label>
+                                    <label class="form-label" for="ora_inizio">Ora di arrivo</label>
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;"
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;"
-                                        type="date" id="data" name="data" required />
+                                        type="date" id="data" name="data" min="<?php echo date('Y-m-d'); ?>"  required />
                                 </div>
                             </div>
 
@@ -67,3 +67,17 @@
         </div>
     </div>
 </form>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const oraInizio = document.getElementById('ora_inizio').value;
+        const oraFine = document.getElementById('ora_fine').value;
+
+        if (oraInizio && oraFine) {
+            if (oraFine <= oraInizio) {
+                event.preventDefault(); // Blocca l'invio del form
+                alert("Attenzione: l'ora di fine deve essere successiva all'ora di inizio.");
+            }
+        }
+    });
+</script>
