@@ -54,9 +54,8 @@ if (!isset($templateParams["titolo"])) {
                 </button>
 
                 <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
-
-                    <div class="d-flex align-items-center gap-4 ms-auto">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtente" aria-controls="menuUtente">
+                    <div class="d-flex align-items-center ms-auto d-lg-none">
+                        <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
                             <i class="bi bi-person-circle fs-4"></i>
                         </button>
                     </div>
@@ -94,7 +93,7 @@ if (!isset($templateParams["titolo"])) {
                             if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "public")){
                                 echo '<li class="nav-item">
                                         <a class="nav-link" href="utente.php">Home</a>
-                                      </li>';
+                                    </li>';
                             }
                             
                         ?>
@@ -107,8 +106,7 @@ if (!isset($templateParams["titolo"])) {
                     </ul>
 
                     <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
-    
-                        <div class="d-flex align-items-center gap-4 ms-auto">
+                        <div class="d-none d-lg-flex align-items-center gap-4 ms-auto">
                             <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </button>

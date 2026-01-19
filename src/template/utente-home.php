@@ -153,6 +153,75 @@
     <?php endif; ?>
   </div>
 </div>
+<!-- Prenotazioni -->
+<div class="row justify-content-center mt-4">
+  <div class="col-10">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h2 class="h5 mb-0">Le mie prenotazioni</h2>
+    </div>
+
+    <?php if(isset($templateParams["mie_prenotazioni"]) && count($templateParams["mie_prenotazioni"]) > 0): ?>
+
+      <div class="d-none d-md-block">
+        <div class="bg-white border">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Orario</th>
+                <th>Posti</th>
+                <th>Tavolo</th>
+                <th>Stato</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
+                <tr>
+                  <td><?php echo date("d/m/Y", strtotime($pren["data"])); ?></td>
+                  <td><?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?></td>
+                  <td><?php echo (int)$pren["nPosti"]; ?></td>
+                  <td>Tavolo <?php echo $pren["id_tavolo"]; ?></td>
+                  <td>
+                    <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
+                      <?php echo ucfirst($pren["stato"]); ?>
+                    </span>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="d-md-none">
+        <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
+          <div class="border bg-white p-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
+              <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
+                <?php echo ucfirst($pren["stato"]); ?>
+              </span>
+            </div>
+            <div class="text-muted small">
+              <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
+            </div>
+            <div class="text-muted small">
+              <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
+            </div>
+            <div class="mt-2 fw-semibold small text-primary">
+              Tavolo <?php echo $pren["id_tavolo"]; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+    <?php else: ?>
+      <div class="alert alert-secondary">
+        Non hai ancora effettuato prenotazioni.
+      </div>
+    <?php endif; ?>
+  </div>
+</div>
 
 <!-- PIATTI DEL GIORNO - BOOTSTRAP CAROUSEL (solo HTML/PHP, niente CSS) -->
 <div class="row justify-content-center">

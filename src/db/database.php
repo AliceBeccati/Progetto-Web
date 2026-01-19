@@ -410,5 +410,13 @@ public function getPrenotazioniOggi(string $email): array {
         return $stmt->execute();
     }
 
+    public function getPrenotazioniUtente($email) {
+        $query = "SELECT * FROM PRENOTAZIONE WHERE email = ? ORDER BY data DESC, ora_inizio DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>

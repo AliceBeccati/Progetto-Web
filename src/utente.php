@@ -5,6 +5,7 @@ $templateParams["titolo"] = "Area utente";
 $templateParams["nome"]   = "template/utente-home.php";
 $templateParams["navbar"] = "user";
 
+$templateParams["mie_prenotazioni"] = $dbh->getPrenotazioniUtente($_SESSION["user"]["email"]);
 $templateParams["piatti"] = $dbh->getPiatto();
 $templateParams["tavolate"] = $dbh->getTavolate($_SESSION["user"]["email"]);
 
