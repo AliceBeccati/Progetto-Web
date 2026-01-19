@@ -372,7 +372,6 @@ public function getPrenotazioniOggi(string $email): array {
 
     // Funzione per trovare il tavolo
     public function trovaTavoloDisponibile($data, $oraInizio, $oraFine, $postiRichiesti) {
-        // Corretto 'ora_inizic' in 'ora_inizio' anche qui
         $query = "SELECT id_tavolo 
                 FROM TAVOLO 
                 WHERE nPosti >= ? 
@@ -392,6 +391,23 @@ public function getPrenotazioniOggi(string $email): array {
         $result = $stmt->get_result()->fetch_assoc();
         
         return $result ? $result['id_tavolo'] : null;
+    }
+
+    // Recupera solo le prenotazioni attive per la gestione sala
+    public function getPrenotazioniAttive() {
+        $query = "SELECT * FROM PRENOTAZIONE WHERE stato = 'attiva' ORDER BY data ASC, ora_inizio ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Cambia lo stato di una prenotazione in 'archiviata'
+    public function archiviaPrenotazione($idPrenotazione) {
+        $query = "UPDATE PRENOTAZIONE SET stato = 'archiviata' WHERE id_pren = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idPrenotazione);
+        return $stmt->execute();
     }
 
 }

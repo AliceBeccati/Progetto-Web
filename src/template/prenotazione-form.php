@@ -1,3 +1,9 @@
+<?php if (!empty($templateParams["errore_pren"])): ?>
+    <div class="alert alert-danger mt-3">
+        <?php echo $templateParams["errore_pren"]; ?>
+    </div>
+<?php endif; ?>
+
 <form action="prenotazioni.php" method="POST">
     <div class="row justify-content-center mb-5">
         <div class="col-md-10">

@@ -11,7 +11,7 @@
     <div class="border bg-white p-4 h-100">
       <h3 class="h5 mb-2">Prenota un tavolo</h3>
       <p class="text-muted mb-3">Scegli giorno, ora e numero persone.</p>
-      <a class="btn btn-outline-primary" href="prenota-tavolo.php">Prenota tavolo</a>
+      <a class="btn btn-outline-primary" href="prenotazioni.php">Prenota tavolo</a>
     </div>
   </div>
 </div>

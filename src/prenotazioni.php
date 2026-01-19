@@ -23,10 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: utente.php");
         exit;
     } else {
-        $templateParams["errore"] = "Errore durante il salvataggio dei dati.";
+        $templateParams["errore_pren"] = "Errore durante il salvataggio dei dati.";
     }
 } else {
-    $templateParams["errore"] = "Nessun tavolo disponibile per i posti e l'orario richiesti.";
+    $templateParams["errore_pren"] = "Nessun tavolo disponibile per i posti e l'orario richiesti.";
 }
 }
 
