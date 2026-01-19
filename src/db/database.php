@@ -106,8 +106,8 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssdi', $nome, $descrizione, $prezzo, $id);
 
-    return $stmt->execute();
-}
+        return $stmt->execute();
+    }
 
 public function getTavolate(string $email){
     $query = "
@@ -358,7 +358,41 @@ public function getPrenotazioniOggi(string $email): array {
     return $st->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
+    // Funzione per inserire la prenotazione
+    public function inserisciPrenotazione($oraInizio, $oraFine, $data, $nPosti, $emailUtente, $idTavolo) {
+        // Corretto 'ora_inizic' in 'ora_inizio'
+        $query = "INSERT INTO PRENOTAZIONE (stato, ora_inizio, ora_fine, data, nPosti, email, id_tavolo) 
+                VALUES ('attiva', ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssisi', $oraInizio, $oraFine, $data, $nPosti, $emailUtente, $idTavolo);
+        
+        return $stmt->execute();
+    }
 
+    // Funzione per trovare il tavolo
+    public function trovaTavoloDisponibile($data, $oraInizio, $oraFine, $postiRichiesti) {
+        // Corretto 'ora_inizic' in 'ora_inizio' anche qui
+        $query = "SELECT id_tavolo 
+                FROM TAVOLO 
+                WHERE nPosti >= ? 
+                AND id_tavolo NOT IN (
+                    SELECT id_tavolo 
+                    FROM PRENOTAZIONE 
+                    WHERE data = ? 
+                    AND stato = 'attiva'
+                    AND NOT (ora_fine <= ? OR ora_inizio >= ?)
+                )
+                ORDER BY nPosti ASC 
+                LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('isss', $postiRichiesti, $data, $oraInizio, $oraFine);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        
+        return $result ? $result['id_tavolo'] : null;
+    }
 
 }
 ?>

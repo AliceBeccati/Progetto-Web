@@ -84,7 +84,7 @@ if (!isset($templateParams["titolo"])) {
                                         <a class="nav-link" href="admin.php">DashBoard</a>
                                       </li>';
                                 echo '<li class="nav-item">
-                                        <a class="nav-link" href="tavoli.php">Tavoli</a>
+                                        <a class="nav-link" href="tavolate.php">Tavoli</a>
                                       </li>';
                                 echo '<li class="nav-item">
                                         <a class="nav-link" href="gestioneSala.php">Sala</a>
