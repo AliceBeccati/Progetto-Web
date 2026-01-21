@@ -226,7 +226,6 @@ public function getMieTavolateOrganizzatore(string $email) {
       FROM TAVOLATA t
       JOIN PARTECIPAZIONE p ON p.id_tavolata = t.id_tavolata
       WHERE p.email = ? AND p.ruolo = 'organizzatore'
-      AND t.data = CURDATE()
       ORDER BY t.data DESC, t.ora DESC
     ";
     $st = $this->db->prepare($q);
