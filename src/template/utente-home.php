@@ -165,7 +165,8 @@
     <?php endif; ?>
   </div>
 </div>
-<!-- Prenotazioni desktop -->
+
+<!-- PRENOTAZIONI -->
 <div class="row justify-content-center mt-4">
   <div class="col-10">
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -174,6 +175,7 @@
 
     <?php if(isset($templateParams["mie_prenotazioni"]) && count($templateParams["mie_prenotazioni"]) > 0): ?>
 
+      <!-- DESKTOP/TABLET -->
       <div class="d-none d-md-block">
         <table class="table table-hover align-middle mb-0">
           <thead>
@@ -183,86 +185,77 @@
               <th>Posti</th>
               <th>Tavolo</th>
               <th>Stato</th>
+              <th class="text-end">Elimina</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
               <tr>
-                <th>Data</th>
-                <th>Orario</th>
-                <th>Posti</th>
-                <th>Tavolo</th>
-                <th>Stato</th>
-                <th>Elimina</th>
+                <td><?php echo date("d/m/Y", strtotime($pren["data"])); ?></td>
+                <td><?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?></td>
+                <td><?php echo (int)$pren["nPosti"]; ?></td>
+                <td>Tavolo <?php echo $pren["id_tavolo"]; ?></td>
+                <td>
+                  <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
+                    <?php echo ucfirst($pren["stato"]); ?>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+                    <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
+                    <input type="hidden" name="azione" value="elimina prenotazione">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash"></i> Elimina
+                    </button>
+                  </form>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
-                <tr>
-                  <td><?php echo date("d/m/Y", strtotime($pren["data"])); ?></td>
-                  <td><?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?></td>
-                  <td><?php echo (int)$pren["nPosti"]; ?></td>
-                  <td>Tavolo <?php echo $pren["id_tavolo"]; ?></td>
-                  <td>
-                    <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
-                      <?php echo ucfirst($pren["stato"]); ?>
-                    </span>
-                  </td>
-                  <td>
-                      <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
-                          <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
-                          <input type="hidden" name="azione" value="elimina prenotazione">
-                          <button type="submit" class="btn btn-sm btn-danger">
-                              <i class="bi bi-trash"></i> Elimina
-                          </button>
-                      </form>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       </div>
 
       <!-- MOBILE -->
-<div class="d-md-none">
-  <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
-    <div class="border bg-white p-3 mb-3">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
-        <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
-          <?php echo ucfirst($pren["stato"]); ?>
-        </span>
+      <div class="d-md-none">
+        <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
+          <div class="border bg-white p-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
+              <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
+                <?php echo ucfirst($pren["stato"]); ?>
+              </span>
+            </div>
+            <div class="text-muted small">
+              <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
+            </div>
+            <div class="text-muted small">
+              <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+              <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?></span>
+
+              <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+                <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
+                <input type="hidden" name="azione" value="elimina prenotazione">
+                <button type="submit" class="btn btn-sm btn-danger">
+                  <i class="bi bi-trash"></i> Elimina
+                </button>
+              </form>
+            </div>
+          </div>
+        <?php endforeach; ?>
       </div>
-      <div class="text-muted small">
-        <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
-      </div>
-      <div class="text-muted small">
-        <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
-      </div>
-      
-      <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-        <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?></span>
-        
-        <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
-            <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
-            <input type="hidden" name="azione" value="elimina prenotazione">
-            <button type="submit" class="btn btn-sm btn-danger">
-                <i class="bi bi-trash"></i> Elimina
-            </button>
-        </form>
-      </div>
-    </div>
-  <?php endforeach; ?>
-</div>
 
     <?php else: ?>
       <div class="alert alert-secondary">
         Non hai ancora effettuato prenotazioni.
       </div>
     <?php endif; ?>
+
   </div>
 </div>
+
 
 
 <!-- PIATTI DEL GIORNO -->
