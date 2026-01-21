@@ -96,15 +96,3 @@
     </div>
 </div>
 
-<!-- Script per sapere il modal a che piatto si riferisce, devo passare id_piatto -->
-<script>
-    const modalModifica = document.getElementById('modalModifica')
-    // 'show.bs.modal' è un evento specifico di Bootstrap che si attiva quando
-    // clicchi sul bottone Modifica, ma prima che la finestra sia visibile
-    modalModifica.addEventListener('show.bs.modal', event => {
-        const button = event.relatedTarget
-        // estraggo l'id del piatto dal data-bs-id del bottone nascosto
-        const id = button.getAttribute('data-bs-id')
-        modalModifica.querySelector('#edit-id').value = id
-    })
-</script>

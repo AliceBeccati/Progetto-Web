@@ -157,5 +157,8 @@ if (!isset($templateParams["titolo"])) {
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
+    <script src="scripts/mod_piatto.js"></script>
+    <script src="scripts/prenotazione.js"></script>
+
 </body>
 </html>
