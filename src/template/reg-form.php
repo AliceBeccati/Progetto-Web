@@ -52,9 +52,11 @@
                                         type="password" id="password" name="password" required />
                                 </div>
                             </div>
-
                             <div class="row mb-3">
-                                <div class="col-12 text-end">
+                                <div class="col-6 with-100">
+                                    <a class="btn btn-danger" href="login.php">Login</a>
+                                </div>
+                                <div class="col-6">
                                     <input class="btn btn-danger" type="submit" id="submit" value="Invia">
                                 </div>
                             </div>

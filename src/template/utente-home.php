@@ -1,17 +1,15 @@
-<div class="row mt-4 g-3">
-  <div class="col-md-6">
-    <div class="border bg-white p-4 h-100">
-      <h3 class="h5 mb-2">Crea una tavolata</h3>
-      <p class="text-muted mb-3">Organizza un gruppo e condividi il codice con gli amici.</p>
-      <a class="btn btn-primary" href="tavolate.php">Crea tavolata</a>
+<div class="row justify-content-center mt-4 g-3">
+  <div class="col-md-5">
+    <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Crea una tavolata</h3>
+      <p class="text-muted small mb-3">Organizza un gruppo e condividi il codice.</p>
+      <a class="btn btn-danger btn-sm" href="tavolate.php">Crea tavolata</a>
     </div>
   </div>
 
-  <div class="col-md-6">
-    <div class="border bg-white p-4 h-100">
-      <h3 class="h5 mb-2">Prenota un tavolo</h3>
-      <p class="text-muted mb-3">Scegli giorno, ora e numero persone.</p>
-      <a class="btn btn-outline-primary" href="prenotazioni.php">Prenota tavolo</a>
+  <div class="col-md-5">
+    <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Prenota un tavolo</h3>
+      <p class="text-muted small mb-3">Scegli giorno, ora e numero persone.</p>
+      <a class="btn btn-danger btn-sm" href="prenotazioni.php">Prenota tavolo</a>
     </div>
   </div>
 </div>
@@ -35,7 +33,7 @@
               <th>Stato</th>
               <th>Partecipanti</th>
               <th>Organizzatore</th>
-              <th class="text-end">Azione</th>
+              <th>Azione</th>
             </tr>
           </thead>
           <tbody>
@@ -153,7 +151,7 @@
     <?php endif; ?>
   </div>
 </div>
-<!-- Prenotazioni -->
+<!-- Prenotazioni desktop -->
 <div class="row justify-content-center mt-4">
   <div class="col-10">
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -203,27 +201,37 @@
         </div>
       </div>
 
-      <div class="d-md-none">
-        <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
-          <div class="border bg-white p-3 mb-3">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
-              <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
-                <?php echo ucfirst($pren["stato"]); ?>
-              </span>
-            </div>
-            <div class="text-muted small">
-              <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
-            </div>
-            <div class="text-muted small">
-              <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
-            </div>
-            <div class="mt-2 fw-semibold small text-primary">
-              Tavolo <?php echo $pren["id_tavolo"]; ?>
-            </div>
-          </div>
-        <?php endforeach; ?>
+      <!-- MOBILE -->
+<div class="d-md-none">
+  <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
+    <div class="border bg-white p-3 mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
+        <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
+          <?php echo ucfirst($pren["stato"]); ?>
+        </span>
       </div>
+      <div class="text-muted small">
+        <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
+      </div>
+      <div class="text-muted small">
+        <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+        <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?></span>
+        
+        <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+            <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
+            <input type="hidden" name="azione" value="elimina prenotazione">
+            <button type="submit" class="btn btn-sm btn-danger">
+                <i class="bi bi-trash"></i> Elimina
+            </button>
+        </form>
+      </div>
+    </div>
+  <?php endforeach; ?>
+</div>
 
     <?php else: ?>
       <div class="alert alert-secondary">
