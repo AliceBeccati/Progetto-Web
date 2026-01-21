@@ -89,7 +89,7 @@ if (!isset($templateParams["titolo"])) {
                             // navbar pubblica (home)
                             if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "public")){
                                 echo '<li class="nav-item">
-                                        <a class="nav-link" href="utente.php">Home</a>
+                                        <a class="nav-link" href="index.php">Home</a>
                                     </li>';
                             }
                             
