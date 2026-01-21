@@ -12,6 +12,15 @@ if (isset($_POST["azione"]) && $_POST["azione"] === "archivia") {
     $dbh->archiviaPrenotazione($idPren);
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    if (isset($_POST["azione"]) && $_POST["azione"] === "elimina prenotazione") {
+        $idPrenotazione = $_POST["id_pren"];
+        $dbh->deletePrenotazione($idPrenotazione);
+    }
+
+}
+
 $templateParams["titolo"] = "Gestione Sala";
 $templateParams["prenotazioni"] = $dbh->getPrenotazioniAttive();
 $templateParams["nome"] = "template/sala-form.php";

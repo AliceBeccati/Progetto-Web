@@ -418,5 +418,18 @@ public function getPrenotazioniOggi(string $email): array {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function deletePrenotazione($id){
+    $query = "DELETE FROM PRENOTAZIONE
+            WHERE id_pren = ?";
+    
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $id);
+    try {
+        return $stmt->execute();
+    } catch (Exception $e) {
+        return false;
+    }
+        
+    }
 }
 ?>

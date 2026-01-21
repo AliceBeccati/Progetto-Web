@@ -172,6 +172,7 @@
                 <th>Posti</th>
                 <th>Tavolo</th>
                 <th>Stato</th>
+                <th>Elimina</th>
               </tr>
             </thead>
             <tbody>
@@ -185,6 +186,15 @@
                     <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
                       <?php echo ucfirst($pren["stato"]); ?>
                     </span>
+                  </td>
+                  <td>
+                      <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+                          <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
+                          <input type="hidden" name="azione" value="elimina prenotazione">
+                          <button type="submit" class="btn btn-sm btn-danger">
+                              <i class="bi bi-trash"></i> Elimina
+                          </button>
+                      </form>
                   </td>
                 </tr>
               <?php endforeach; ?>

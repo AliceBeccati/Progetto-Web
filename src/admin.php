@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $idPiatto = $_POST["id_piatto"];
         $dbh->deletePiatto($idPiatto);
     }
+
 }
+
 
 if (isset($_POST["azione"]) && $_POST["azione"] === "modifica") {
     $id = $_POST["id_piatto"];
