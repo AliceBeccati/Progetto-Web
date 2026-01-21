@@ -68,16 +68,3 @@
     </div>
 </form>
 
-<script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-        const oraInizio = document.getElementById('ora_inizio').value;
-        const oraFine = document.getElementById('ora_fine').value;
-
-        if (oraInizio && oraFine) {
-            if (oraFine <= oraInizio) {
-                event.preventDefault(); // Blocca l'invio del form
-                alert("Attenzione: l'ora di fine deve essere successiva all'ora di inizio.");
-            }
-        }
-    });
-</script>

@@ -1,9 +1,19 @@
 <?php
 require_once 'bootstrap.php';
 
+
 $templateParams["titolo"] = "Area utente";
 $templateParams["nome"]   = "template/utente-home.php";
 $templateParams["navbar"] = "user";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    if (isset($_POST["azione"]) && $_POST["azione"] === "elimina prenotazione") {
+        $idPrenotazione = $_POST["id_pren"];
+        $dbh->deletePrenotazione($idPrenotazione);
+    }
+
+}
 
 $templateParams["mie_prenotazioni"] = $dbh->getPrenotazioniUtente($_SESSION["user"]["email"]);
 $templateParams["piatti"] = $dbh->getPiatto();

@@ -12,7 +12,8 @@
                             <th>Tavolo</th>
                             <th>Posti</th>
                             <th>Cliente</th>
-                            <th class="text-end">Azione</th>
+                            <th>Archivia</th>
+                            <th>Elimina</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,12 +24,21 @@
                                 <td><span class="badge bg-danger text-white">Tavolo <?php echo $pren["id_tavolo"]; ?></span></td>
                                 <td><?php echo $pren["nPosti"]; ?></td>
                                 <td><?php echo $pren["email"]; ?></td>
-                                <td class="text-end">
+                                <td>
                                     <form action="gestioneSala.php" method="POST" style="display:inline;">
                                         <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
                                         <input type="hidden" name="azione" value="archivia">
                                         <button type="submit" class="btn btn-sm btn-success">
                                             <i class="bi bi-check-circle"></i> Archivia
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="gestioneSala.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+                                        <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
+                                        <input type="hidden" name="azione" value="elimina prenotazione">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-trash"></i> Elimina
                                         </button>
                                     </form>
                                 </td>

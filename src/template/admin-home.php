@@ -1,10 +1,26 @@
+<div class="row justify-content-center mt-4 g-3">
+    <div class="col-md-5">
+        <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Gestisci la sala</h3>
+        <p class="text-muted small mb-3">Gestisci e archivia le prenotazioni dei tavoli.</p>
+        <a class="btn btn-danger" href="gestioneSala.php">Gestione sala</a>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Aggiungi un nuovo piatto</h3>
+            <p class="text-muted small mb-3">Aggiungi un nuovo piatto al menu del giorno.</p>
+            <a href="inserisci-piatto.php" class="btn btn-danger">
+                <i class=" bi bi-plus-circle-fill"></i> Aggiungi Piatto
+            </a>
+        </div>
+    </div>
+</div>
+
 <div class="row justify-content-center">
     <div class="col-10">
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
             <h2 class="fw-bold">Gestione Menu</h2>
-            <a href="inserisci-piatto.php" class="btn btn-danger">
-                <i class=" bi bi-plus-circle-fill"></i> Aggiungi Nuovo Piatto
-            </a>
+
         </div>
 
         <div class="row">
@@ -96,15 +112,3 @@
     </div>
 </div>
 
-<!-- Script per sapere il modal a che piatto si riferisce, devo passare id_piatto -->
-<script>
-    const modalModifica = document.getElementById('modalModifica')
-    // 'show.bs.modal' è un evento specifico di Bootstrap che si attiva quando
-    // clicchi sul bottone Modifica, ma prima che la finestra sia visibile
-    modalModifica.addEventListener('show.bs.modal', event => {
-        const button = event.relatedTarget
-        // estraggo l'id del piatto dal data-bs-id del bottone nascosto
-        const id = button.getAttribute('data-bs-id')
-        modalModifica.querySelector('#edit-id').value = id
-    })
-</script>
