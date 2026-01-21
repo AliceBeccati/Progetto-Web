@@ -4,7 +4,8 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
   $colClass = ($perSlide == 2) ? "col-6" : "col-12 col-md-6 col-lg-4";
   ?>
 
-  <div id="<?php echo $id; ?>" class="carousel slide carousel-dark" data-bs-interval="false">
+  <div id="<?php echo $id; ?>" class="carousel slide" data-bs-interval="false">
+
     <div class="carousel-inner">
 
       <?php foreach ($chunks as $i => $group): ?>
@@ -32,17 +33,20 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
     </div>
 
     <?php if (count($chunks) > 1): ?>
-      <button class="carousel-control-prev" type="button"
-              data-bs-target="#<?php echo $id; ?>" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <button class="carousel-control-prev" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="prev">
+        <span class="bg-light rounded-circle p-2 d-inline-flex" aria-hidden="true">
+            <span class="carousel-control-prev-icon"></span>
+        </span>
         <span class="visually-hidden">Precedente</span>
-      </button>
+        </button>
 
-      <button class="carousel-control-next" type="button"
-              data-bs-target="#<?php echo $id; ?>" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <button class="carousel-control-next" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="next">
+            <span class="bg-light rounded-circle p-2 d-inline-flex" aria-hidden="true">
+                <span class="carousel-control-next-icon"></span>
+            </span>
         <span class="visually-hidden">Successivo</span>
-      </button>
+        </button>
+
     <?php endif; ?>
 
   </div>
