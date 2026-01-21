@@ -1,4 +1,3 @@
-<!-- HERO SECTION -->
 <section class="bg-light p-5 rounded shadow-sm mb-5">
     <div class="container">
         <div class="row align-items-center">
