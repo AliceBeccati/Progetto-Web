@@ -8,10 +8,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+// chi-siamo è sempre visibile e navbar si deve adattare al ruolo
 if (!isset($_SESSION["user"])) {
     $templateParams["navbar"] = "public";
 } else {
-    // adatta la chiave al tuo array di sessione: "ruolo" / "role" / "tipo" / ecc.
     $ruolo = strtolower(trim($_SESSION["user"]["ruolo"] ?? ""));
 
     if ($ruolo === "admin") {

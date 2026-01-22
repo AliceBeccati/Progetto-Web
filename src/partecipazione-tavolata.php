@@ -16,7 +16,7 @@ $email = $_SESSION["user"]["email"];
 $ok = false;
 if ($action === "join") {
     $ok = $dbh->partecipaTavolata($idTavolata, $email);
-} else { // leave
+} else {
     $ok = $dbh->annullaPartecipazione($idTavolata, $email);
 }
 
