@@ -49,7 +49,7 @@ if (!isset($templateParams["titolo"])) {
                 <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                     <div class="d-flex align-items-center ms-auto d-lg-none">
                         <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
-                            <i class="bi bi-person-circle fs-4"></i>
+                            <i class="bi bi-person-circle fs-4"><!-- --></i>
                         </button>
                     </div>
                 <?php endif; ?>
@@ -98,7 +98,8 @@ if (!isset($templateParams["titolo"])) {
                     <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                         <div class="d-none d-lg-flex align-items-center gap-4 ms-auto">
                             <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
-                                <i class="bi bi-person-circle fs-4"></i>
+                                <i class="bi bi-person-circle fs-4"><!-- --></i>
+                                <!-- -->
                             </button>
                         </div>
                     <?php endif; ?>

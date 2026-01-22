@@ -94,7 +94,7 @@ $edit = $templateParams["tavolataEdit"] ?? null;
     <div class="modal-content">
     <div class="modal-header bg-danger text-white">
       <h3 class="modal-title">Modifica Tavolata</h3>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"><!-- --></button>
     </div>
 
       <form action="tavolate.php" method="POST">
