@@ -3,13 +3,11 @@
         <div class="row align-items-center">
             <div class="col-md-7">
                 <h1 class="fw-bold mb-3 text-black">MensaMate</h1>
-                <p class="lead">
+                <p>
                     MensaMate è una piattaforma che ti permette di
                     <strong>organizzare tavolate condivise</strong>,
                     <strong>prenotare tavoli</strong> e
-                    <strong>scoprire il piatto del giorno</strong>.
-                </p>
-                <p>
+                    <strong>scoprire il piatto del giorno</strong>.<br>
                     Che tu voglia pranzare in compagnia, partecipare a una tavolata tematica
                     o semplicemente prenotare un tavolo, MensaMate ti aiuta a farlo
                     in modo semplice e veloce.
