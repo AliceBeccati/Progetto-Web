@@ -9,19 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const oraFine = oraFineInput.value;
 
             if (oraInizio && oraFine && oraFine <= oraInizio) {
-                // Blocca l'invio
+                // blocca invio
                 event.preventDefault();
-                
-                // Aggiunge lo stile di errore di Bootstrap
                 oraFineInput.classList.add('is-invalid');
-                oraFineInput.focus(); // Porta il cursore sul campo sbagliato
+                oraFineInput.focus(); // cursore su campo sbagliato
             } else {
-                // Rimuove l'errore se l'utente ha corretto i dati
+                // utente corregge i dati
                 oraFineInput.classList.remove('is-invalid');
             }
         });
 
-        // Opzionale: Rimuove il rosso appena l'utente cambia l'orario
+        //utente corregge l'orario
         oraFineInput.addEventListener('input', function() {
             this.classList.remove('is-invalid');
         });

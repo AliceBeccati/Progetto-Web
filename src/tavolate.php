@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     } else {
         $templateParams["errore"] = "Salvataggio tavolata fallito.";
-        // NON faccio redirect: voglio mostrare l'errore sotto al form
+        // errore sotto al form
     }
 }
 

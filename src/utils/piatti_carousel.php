@@ -1,4 +1,6 @@
 <?php
+// funzione render per non duplicare codice carousel piatti tra pc e mobile
+// scelgo quanti piatti per slide
 function renderPiattiCarousel($id, $piatti, $perSlide) {
   $chunks = array_chunk($piatti, $perSlide);
   $colClass = ($perSlide == 2) ? "col-6" : "col-12 col-md-6 col-lg-4";
@@ -16,9 +18,9 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
               <div class="<?php echo $colClass; ?>">
                 <article class="bg-white border p-3 h-100">
                   <img src="img/<?php echo $p["foto"]; ?>"
-                       alt="<?php echo $p["nome"]; ?>"
-                       class="d-block w-100"
-                       style="height:140px; object-fit:cover;">
+                      alt="<?php echo $p["nome"]; ?>"
+                      class="d-block w-100"
+                      style="height:140px; object-fit:cover;">
                   <div class="fw-semibold mt-2"><?php echo $p["nome"]; ?></div>
                   <div class="text-muted small"><?php echo $p["descrizione"]; ?></div>
                   <div class="fw-bold text-danger mt-2">€ <?php echo $p["prezzo"]; ?></div>

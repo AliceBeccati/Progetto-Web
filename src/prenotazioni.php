@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 1. Cerchiamo un tavolo libero
     $idTavolo = $dbh->trovaTavoloDisponibile($data, $oraInizio, $oraFine, $nPosti);
 
-   if ($idTavolo) {
+if ($idTavolo) {
     // Assicurati che l'ordine dei parametri sia lo stesso definito in database.php
     $successo = $dbh->inserisciPrenotazione($oraInizio, $oraFine, $data, $nPosti, $emailAdmin, $idTavolo);
     

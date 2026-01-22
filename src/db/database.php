@@ -157,7 +157,6 @@ public function getTavolate(string $email){
 
 
 public function partecipaTavolata(int $idTavolata, string $email){
-        // Inserimento partecipazione utente
         $qIns = "
             INSERT INTO PARTECIPAZIONE (id_tavolata, email, ruolo)
             SELECT t.id_tavolata, ?, 'ospite'
@@ -189,20 +188,6 @@ public function partecipaTavolata(int $idTavolata, string $email){
 }
 
 public function annullaPartecipazione(int $idTavolata, string $email){
-
-    /* controllo ruolo
-    $qRole = "SELECT ruolo FROM PARTECIPAZIONE WHERE id_tavolata = ? AND email = ? LIMIT 1";
-    $st = $this->db->prepare($qRole);
-    $st->bind_param("is", $idTavolata, $email);
-    $st->execute();
-    $res = $st->get_result();
-
-    if ($res->num_rows === 0) return false;
-
-    $ruolo = strtolower($res->fetch_assoc()["ruolo"]);
-    if ($ruolo === "organizzatore") return false;*/
-
-    // cancella la partecipazione
     $qDel = "DELETE FROM PARTECIPAZIONE WHERE id_tavolata = ? AND email = ?";
     $st2 = $this->db->prepare($qDel);
     $st2->bind_param("is", $idTavolata, $email);
@@ -253,7 +238,6 @@ public function getMiaTavolataById(int $idTavolata, string $email) {
 }
 
 public function creaTavolata(string $titolo, string $data, string $ora, int $maxPersone, string $emailOrg) {
-    // inserisci tavolata
     $q1 = "INSERT INTO TAVOLATA (titolo, data, ora, max_persone, stato) VALUES (?, ?, ?, ?, 'aperta')";
     $st1 = $this->db->prepare($q1);
     $st1->bind_param("sssi", $titolo, $data, $ora, $maxPersone);
@@ -261,7 +245,7 @@ public function creaTavolata(string $titolo, string $data, string $ora, int $max
 
     $id = (int)$this->db->insert_id;
 
-    // inserisci partecipazione organizzatore
+    // inserimento partecipazione organizzatore
     $q2 = "INSERT INTO PARTECIPAZIONE (id_tavolata, email, ruolo) VALUES (?, ?, 'organizzatore')";
     $st2 = $this->db->prepare($q2);
     $st2->bind_param("is", $id, $emailOrg);
@@ -270,94 +254,40 @@ public function creaTavolata(string $titolo, string $data, string $ora, int $max
 
 public function aggiornaTavolata(int $idTavolata, string $titolo, string $data, string $ora, int $maxPersone, string $emailOrg) {
     $q = "
-      UPDATE TAVOLATA t
-      JOIN PARTECIPAZIONE p ON p.id_tavolata = t.id_tavolata
-      SET t.titolo = ?, t.data = ?, t.ora = ?, t.max_persone = ?
-      WHERE t.id_tavolata = ? AND p.email = ? AND p.ruolo = 'organizzatore'
+    UPDATE TAVOLATA t
+    JOIN PARTECIPAZIONE p ON p.id_tavolata = t.id_tavolata
+    SET t.titolo = ?, t.data = ?, t.ora = ?, t.max_persone = ?
+    WHERE t.id_tavolata = ? AND p.email = ? AND p.ruolo = 'organizzatore'
     ";
     $st = $this->db->prepare($q);
     $st->bind_param("sssiis", $titolo, $data, $ora, $maxPersone, $idTavolata, $emailOrg);
     return $st->execute();
 }
 
-public function setTavolataPrenotata(int $idTavolata): bool {
+public function setTavolataPrenotata(int $idTavolata) {
     $q = "UPDATE TAVOLATA SET prenotata = 1 WHERE id_tavolata = ?";
     $st = $this->db->prepare($q);
     $st->bind_param("i", $idTavolata);
     return $st->execute();
 }
 
-public function creaPrenotazioneOggi(string $email, string $oraInizio, int $posti) {
-
-    $oraFine = 
-
-    // 1) Trovo un tavolo disponibile con posti >= richiesti e non occupato nell'intervallo
-    $qTavolo = "
-        SELECT t.id_tavolo
-        FROM TAVOLO t
-        WHERE t.posti >= ?
-          AND NOT EXISTS (
-              SELECT 1
-              FROM RISERVA r
-              JOIN PRENOTAZIONE p ON p.id_prenotazione = r.id_prenotazione
-              WHERE r.id_tavolo = t.id_tavolo
-                AND p.data = CURDATE()
-                AND NOT (p.ora_fine <= ? OR p.ora_inizio >= ?)
-          )
-        ORDER BY t.posti ASC, t.id_tavolo ASC
-        LIMIT 1
-    ";
-    $st = $this->db->prepare($qTavolo);
-    $st->bind_param("iss", $posti, $oraInizio, $oraFine);
-    $st->execute();
-    $res = $st->get_result();
-    if ($res->num_rows === 0) return false;
-
-    $idTavolo = (int)$res->fetch_assoc()["id_tavolo"];
-
-    // 2) Inserisco prenotazione
-    $qInsPren = "
-        INSERT INTO PRENOTAZIONE (data, ora_inizio, ora_fine, n_posti, stato)
-        VALUES (CURDATE(), ?, ?, ?, 'confermata')
-    ";
-    $st2 = $this->db->prepare($qInsPren);
-    $st2->bind_param("ssi", $oraInizio, $oraFine, $posti);
-    if (!$st2->execute()) return false;
-
-    $idPren = (int)$this->db->insert_id;
-
-    // 3) Collego tavolo
-    $qRis = "INSERT INTO RISERVA (id_prenotazione, id_tavolo) VALUES (?, ?)";
-    $st3 = $this->db->prepare($qRis);
-    $st3->bind_param("ii", $idPren, $idTavolo);
-    if (!$st3->execute()) return false;
-
-    // 4) Collego utente
-    $qEff = "INSERT INTO EFFETTUA (id_prenotazione, email) VALUES (?, ?)";
-    $st4 = $this->db->prepare($qEff);
-    $st4->bind_param("is", $idPren, $email);
-    if (!$st4->execute()) return false;
-
-    return true;
-}
-
-public function getPrenotazioniOggi(string $email): array {
+public function getPrenotazioniOggi(string $email) {
     $q = "
         SELECT
-          p.id_prenotazione,
-          p.data,
-          p.ora_inizio,
-          p.ora_fine,
-          p.n_posti,
-          p.stato,
-          t.id_tavolo,
-          t.posti AS posti_tavolo
+        p.id_prenotazione,
+        p.data,
+        p.ora_inizio,
+        p.ora_fine,
+        p.n_posti,
+        p.stato,
+        t.id_tavolo,
+        t.posti AS posti_tavolo
         FROM PRENOTAZIONE p
         JOIN EFFETTUA e ON e.id_prenotazione = p.id_prenotazione
         JOIN RISERVA r ON r.id_prenotazione = p.id_prenotazione
         JOIN TAVOLO t ON t.id_tavolo = r.id_tavolo
         WHERE p.data = CURDATE()
-          AND e.email = ?
+        AND e.email = ?
         ORDER BY p.ora_inizio
     ";
     $st = $this->db->prepare($q);
@@ -366,7 +296,6 @@ public function getPrenotazioniOggi(string $email): array {
     return $st->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
-    // Funzione per inserire la prenotazione
     public function inserisciPrenotazione($oraInizio, $oraFine, $data, $nPosti, $emailUtente, $idTavolo) {
         // Corretto 'ora_inizic' in 'ora_inizio'
         $query = "INSERT INTO PRENOTAZIONE (stato, ora_inizio, ora_fine, data, nPosti, email, id_tavolo) 
@@ -378,7 +307,6 @@ public function getPrenotazioniOggi(string $email): array {
         return $stmt->execute();
     }
 
-    // Funzione per trovare il tavolo
     public function trovaTavoloDisponibile($data, $oraInizio, $oraFine, $postiRichiesti) {
         $query = "SELECT id_tavolo 
                 FROM TAVOLO 
@@ -401,7 +329,6 @@ public function getPrenotazioniOggi(string $email): array {
         return $result ? $result['id_tavolo'] : null;
     }
 
-    // Recupera solo le prenotazioni attive per la gestione sala
     public function getPrenotazioniAttive() {
         $query = "SELECT * FROM PRENOTAZIONE WHERE stato = 'attiva' ORDER BY data ASC, ora_inizio ASC";
         $stmt = $this->db->prepare($query);
@@ -410,7 +337,6 @@ public function getPrenotazioniOggi(string $email): array {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Cambia lo stato di una prenotazione in 'archiviata'
     public function archiviaPrenotazione($idPrenotazione) {
         $query = "UPDATE PRENOTAZIONE SET stato = 'archiviata' WHERE id_pren = ?";
         $stmt = $this->db->prepare($query);

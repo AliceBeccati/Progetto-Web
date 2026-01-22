@@ -11,8 +11,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION["user"])) {
     $templateParams["navbar"] = "public";
 } else {
-    // adatta la chiave al tuo array di sessione: "ruolo" / "role" / "tipo" / ecc.
-    $ruolo = strtolower(trim($_SESSION["user"]["ruolo"] ?? ""));
+    $ruolo = strtolower(trim($_SESSION["user"]["ruolo"]));
 
     if ($ruolo === "admin") {
         $templateParams["navbar"] = "admin";
