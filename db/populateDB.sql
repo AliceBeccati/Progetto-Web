@@ -1,7 +1,6 @@
 -- INSERIMENTO DATI
 -----------------------
 
--- UTENTI
 INSERT INTO UTENTE VALUES
 ('admin@tavolate.it', 'Admin', 'pass123', 'Gestore del sistema e organizzatore.', 'admin'),
 ('mario.rossi@email.it', 'Mario Rossi', 'pwd1', 'Amante delle tavolate conviviali.', 'utente'),
@@ -15,7 +14,6 @@ INSERT INTO UTENTE VALUES
 ('giorgio.riva@email.it', 'Giorgio Riva', 'pwd9', 'Studente amante dei pranzi di gruppo.', 'utente'),
 ('martina.costa@email.it', 'Martina Costa', 'pwd10', 'Sempre presente agli eventi gluten-free.', 'utente');
 
--- TAVOLI
 INSERT INTO TAVOLO (tipo, nPosti, emailAdmin) VALUES
 ('centrale', 2, 'admin@tavolate.it'),
 ('centrale', 4, 'admin@tavolate.it'),
@@ -30,7 +28,6 @@ INSERT INTO TAVOLO (tipo, nPosti, emailAdmin) VALUES
 ('finestra', 8, 'admin@tavolate.it'),
 ('bancone', 3, 'admin@tavolate.it');
 
--- TAVOLATE
 INSERT INTO TAVOLATA (data, titolo, ora, stato, max_persone) VALUES
 ('2025-01-15', 'Pranzo Sushi', '12:30', 'aperta', 10),
 ('2025-01-20', 'Tavolata Vegetariana', '13:00', 'aperta', 8),
@@ -40,7 +37,6 @@ INSERT INTO TAVOLATA (data, titolo, ora, stato, max_persone) VALUES
 ('2025-02-10', 'Tavolata Gluten Free', '12:15', 'aperta', 6),
 ('2025-02-12', 'Pranzo Sociale', '13:00', 'chiusa', 14);
 
--- PARTECIPAZIONE
 INSERT INTO PARTECIPAZIONE VALUES
 (1, 'mario.rossi@email.it', 'organizzatore'),
 (1, 'giulia.bianchi@email.it', 'ospite'),
@@ -68,7 +64,6 @@ INSERT INTO PARTECIPAZIONE VALUES
 (7, 'giorgio.riva@email.it', 'ospite'),
 (7, 'davide.ferri@email.it', 'ospite');
 
--- PRENOTAZIONI INDIPENDENTI
 INSERT INTO PRENOTAZIONE (stato, ora_inizio, ora_fine, data, nPosti, email, id_tavolo) VALUES
 ('archiviata', '20:00', '22:00', '2025-01-10', 2, 'mario.rossi@email.it', 2),
 ('archiviata', '12:30', '14:00', '2025-01-11', 3, 'giulia.bianchi@email.it', 3),
@@ -81,7 +76,6 @@ INSERT INTO PRENOTAZIONE (stato, ora_inizio, ora_fine, data, nPosti, email, id_t
 ('archiviata', '20:00', '22:00', '2025-03-05', 5, 'giorgio.riva@email.it', 9),
 ('archiviata', '19:30', '21:00', '2025-03-20', 2, 'martina.costa@email.it', 6);
 
--- CATEGORIE
 INSERT INTO CATEGORIA VALUES
 ('vegetariano', 'Piatti senza carne o pesce.'),
 ('vegano', 'Piatti totalmente vegetali.'),
@@ -91,7 +85,6 @@ INSERT INTO CATEGORIA VALUES
 ('gym', 'Piatti proteici per sportivi.'),
 ('dolce', 'Piatti dessert.');
 
--- PREFERENZE UTENTI
 INSERT INTO PREFERENZA VALUES
 ('mario.rossi@email.it', 'healthy'),
 ('mario.rossi@email.it', 'gym'),
@@ -119,7 +112,6 @@ INSERT INTO PREFERENZA VALUES
 
 ('martina.costa@email.it', 'senza glutine');
 
--- PIATTI DEL GIORNO
 INSERT INTO PIATTO_DEL_GIORNO (nome, descrizione, prezzo, foto, emailAdmin) VALUES
 ('Pasta alla Carbonara', 'Spaghetti con guanciale croccante, uova e pecorino.', 11.50, 'carbonara.jpg', 'admin@tavolate.it'),
 ('Insalata Mediterranea', 'Pomodori, cetrioli, olive nere, feta e origano.', 8.90, 'insalata_mediterranea.jpg', 'admin@tavolate.it'),
@@ -127,7 +119,6 @@ INSERT INTO PIATTO_DEL_GIORNO (nome, descrizione, prezzo, foto, emailAdmin) VALU
 ('Lasagne al Ragù', 'Lasagne tradizionali alla bolognese.', 13.50, 'lasagne.jpg', 'admin@tavolate.it'),
 ('Tiramisù della Casa', 'Dolce con mascarpone e cacao.', 5.50, 'tiramisu.jpg', 'admin@tavolate.it');
 
--- APPARTIENE
 INSERT INTO APPARTIENE VALUES
 (1, 'gym'),
 (2, 'vegetariano'),
@@ -141,7 +132,6 @@ INSERT INTO APPARTIENE VALUES
 (4, 'healthy'),
 (5, 'dolce');
 
--- TAG TAVOLATE
 INSERT INTO TAG VALUES
 (1, 'healthy'),
 (1, 'gym'),

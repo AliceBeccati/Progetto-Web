@@ -1,4 +1,6 @@
 <?php
+// funzione render per i bottoni di azione tavolate
+// variant: desktop, mobile
 function renderTavolataAction(array $t, string $variant = "desktop"): void
 {
     $aperta    = (strtolower($t["stato"] ?? "") === "aperta");
