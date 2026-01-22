@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+// privacy è sempre visibile e navbar si deve adattare al ruolo
 if (!isset($_SESSION["user"])) {
     $templateParams["navbar"] = "public";
 } else {

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST" || empty($_POST["id_tavolata"])) {
 
 $idTavolata = (int)$_POST["id_tavolata"];
 
-/* 1) Recupero tavolata (solo se io sono l'organizzatore) */
+/* recupero tavolata solo se sono l'organizzatore */
 $t = $dbh->getMiaTavolataById($idTavolata, $email);
 
 if (!$t) {
@@ -23,15 +23,12 @@ if (!$t) {
   exit;
 }
 
-/* 2) Dati prenotazione dalla tavolata */
-$data = $t["data"];                 // in TAVOLATA c'è
+$data = $t["data"];       
 $oraInizio = substr($t["ora"], 0, 5);
 $nPosti = (int)$t["max_persone"];
 
-/* Se non hai ora_fine nella tavolata, scegli durata fissa (es. 1 ora) */
-$oraFine = date("H:i", strtotime($oraInizio . " +1 hour"));
+$oraFine = date("H:i", strtotime($oraInizio . " +1 hour")); //ora_fine durata fissa (1 ora)
 
-/* 3) Trova tavolo libero + inserisci prenotazione (come prenotazioni.php) */
 $idTavolo = $dbh->trovaTavoloDisponibile($data, $oraInizio, $oraFine, $nPosti);
 
 if ($idTavolo) {
