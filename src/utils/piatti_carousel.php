@@ -34,22 +34,21 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
 
     </div>
 
-    <?php if (count($chunks) > 1): ?>
-      <button class="carousel-control-prev" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="prev">
-        <span class="bg-light rounded-circle p-2 d-inline-flex" aria-hidden="true">
-            <span class="carousel-control-prev-icon"></span>
-        </span>
-        <span class="visually-hidden">Precedente</span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="next">
-            <span class="bg-light rounded-circle p-2 d-inline-flex" aria-hidden="true">
-                <span class="carousel-control-next-icon"></span>
-            </span>
-        <span class="visually-hidden">Successivo</span>
-        </button>
-
-    <?php endif; ?>
+<?php if (count($chunks) > 1): ?>
+  <button class="carousel-control-prev opacity-20" type="button"
+          data-bs-target="#<?php echo $id; ?>"
+          data-bs-slide="prev"
+          aria-label="Slide precedente"> <span class="bg-white rounded-circle p-2 d-inline-flex shadow-sm" aria-hidden="true">
+        <span class="carousel-control-prev-icon"></span>
+    </span>
+  </button>
+  <button class="carousel-control-next opacity-20" type="button"
+          data-bs-target="#<?php echo $id; ?>"
+          data-bs-slide="next"
+          aria-label="Slide successiva"> <span class="bg-white rounded-circle p-2 d-inline-flex shadow-sm" aria-hidden="true">
+          <span class="carousel-control-next-icon"></span>
+      </span>
+<?php endif; ?>
 
   </div>
   <?php
