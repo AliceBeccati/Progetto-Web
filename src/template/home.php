@@ -23,14 +23,13 @@
                     <a href="gestioneLogin.php" class="btn btn-danger btn-lg">
                         Inizia Ora
                     </a>
-                    <small class="text-secondary">Già <strong>+500</strong> utenti attivi</small>
                 </div>
             </div>
 
             <div class="col-md-5 text-center">
                                     <img src="img/logo.jpg" alt="Logo MensaMate" class="img-fluid mb-3 rounded" style="height: auto; object-fit: cover; width: 60%;">
                 <div class="p-4 bg-white border rounded shadow-sm">
-                    <h5 class="fw-bold mb-3">Perché usare MensaMate?</h5>
+                    <h2 class="fw-bold mb-3">Perché usare MensaMate?</h2>
                     <ul class="list-unstyled text-start">
                         <li class="mb-2">
                             <i class="bi bi-check-circle-fill text-success"></i> Prenota tavoli facilmente</li>

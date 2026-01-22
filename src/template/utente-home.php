@@ -34,7 +34,7 @@
               <th>Stato</th>
               <th>Partecipanti</th>
               <th>Organizzatore</th>
-              <th class="text-end"></th>
+              <th class="text-end">Quantità</th>
             </tr>
           </thead>
           <tbody>
