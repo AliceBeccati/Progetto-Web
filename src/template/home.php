@@ -32,13 +32,13 @@
                     <h2 class="fw-bold mb-3">Perché usare MensaMate?</h2>
                     <ul class="list-unstyled text-start">
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Prenota tavoli facilmente</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Prenota tavoli facilmente</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Partecipa a tavolate tematiche</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Partecipa a tavolate tematiche</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Scopri piatti del giorno</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Scopri piatti del giorno</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Filtra per preferenze alimentari</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Filtra per preferenze alimentari</li>
                     </ul>
                 </div>
             </div>
