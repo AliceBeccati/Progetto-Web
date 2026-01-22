@@ -74,10 +74,10 @@ if (!isset($templateParams["titolo"])) {
                             if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "admin")){
                                 echo '<li class="nav-item">
                                         <a class="nav-link" href="admin.php">DashBoard</a>
-                                      </li>';
+                                    </li>';
                                 echo '<li class="nav-item">
                                         <a class="nav-link" href="gestioneSala.php">Sala</a>
-                                      </li>';
+                                    </li>';
                             }
                             // navbar pubblica (home)
                             if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "public")){
@@ -152,6 +152,7 @@ if (!isset($templateParams["titolo"])) {
 
     <script src="scripts/mod_piatto.js"></script>
     <script src="scripts/prenotazione.js"></script>
+    <script src="scripts/tavolate_modal.js"></script>
 
 </body>
 </html>

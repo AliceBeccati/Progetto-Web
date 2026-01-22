@@ -271,31 +271,6 @@ public function setTavolataPrenotata(int $idTavolata) {
     return $st->execute();
 }
 
-public function getPrenotazioniOggi(string $email) {
-    $q = "
-        SELECT
-        p.id_prenotazione,
-        p.data,
-        p.ora_inizio,
-        p.ora_fine,
-        p.n_posti,
-        p.stato,
-        t.id_tavolo,
-        t.posti AS posti_tavolo
-        FROM PRENOTAZIONE p
-        JOIN EFFETTUA e ON e.id_prenotazione = p.id_prenotazione
-        JOIN RISERVA r ON r.id_prenotazione = p.id_prenotazione
-        JOIN TAVOLO t ON t.id_tavolo = r.id_tavolo
-        WHERE p.data = CURDATE()
-        AND e.email = ?
-        ORDER BY p.ora_inizio
-    ";
-    $st = $this->db->prepare($q);
-    $st->bind_param("s", $email);
-    $st->execute();
-    return $st->get_result()->fetch_all(MYSQLI_ASSOC);
-}
-
     public function inserisciPrenotazione($oraInizio, $oraFine, $data, $nPosti, $emailUtente, $idTavolo) {
         // Corretto 'ora_inizic' in 'ora_inizio'
         $query = "INSERT INTO PRENOTAZIONE (stato, ora_inizio, ora_fine, data, nPosti, email, id_tavolo) 
@@ -344,7 +319,7 @@ public function getPrenotazioniOggi(string $email) {
         return $stmt->execute();
     }
 
-    public function getPrenotazioniUtente($email) {
+    public function getPrenotazioniUtente($email) {     // sia attive che archiviate
         $query = "SELECT * FROM PRENOTAZIONE WHERE email = ? ORDER BY data DESC, ora_inizio DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);

@@ -4,7 +4,7 @@
 
         <?php if(count($templateParams["prenotazioni"]) > 0): ?>
             
-            <!-- Desktop View -->
+            <!-- Desktop  -->
             <div class="d-none d-md-block table-responsive bg-white shadow-sm rounded p-3">
                 <table class="table table-hover align-middle">
                     <thead class="table-light">
@@ -46,7 +46,7 @@
                 </table>
             </div>
             
-            <!-- Mobile View -->
+            <!-- Mobile -->
             <div class="d-md-none">
                 <?php foreach($templateParams["prenotazioni"] as $pren): ?>
                     <div class="card mb-3 shadow-sm border-0">
