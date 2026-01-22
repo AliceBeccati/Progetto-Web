@@ -28,12 +28,12 @@ $edit = $templateParams["tavolataEdit"] ?? null;
 
         <div class="col-md-6">
             <label class="form-label" for="data_tav">Data</label>
-            <input type="date" class="form-control" id="data_tav" name="data" required value="<?php echo $edit["data"] ?? ""; ?>">
+            <input type="date" class="form-control" id="data_tav" name="data" min="<?php echo date('Y-m-d'); ?>" required value="<?php echo $edit["data"] ?? ""; ?>">
         </div>
 
         <div class="col-md-6">
             <label class="form-label" for="ora_tav">Ora</label>
-            <input type="time" class="form-control" id="ora_tav" name="ora" required value="<?php echo isset($edit["ora"]) ? substr($edit["ora"], 0, 5) : ""; ?>">
+            <input type="time" class="form-control" id="ora_tav" name="ora" min="<?php echo date('H:i'); ?>" required value="<?php echo isset($edit["ora"]) ? substr($edit["ora"], 0, 5) : ""; ?>">
         </div>
 
         <div class="col-md-6">
