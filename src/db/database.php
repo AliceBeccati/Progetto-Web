@@ -117,6 +117,7 @@ public function getTavolate(string $email){
           t.ora,
           t.titolo,
           t.max_persone,
+          T.prenotata,
 
           (SELECT COUNT(*)
            FROM PARTECIPAZIONE p
@@ -143,7 +144,7 @@ public function getTavolate(string $email){
            LIMIT 1) AS mio_ruolo
 
         FROM TAVOLATA t
-        WHERE t.data = CURDATE()
+        WHERE t.data = CURDATE() AND t.ora >= CURTIME()
         ORDER BY t.ora
     ";
 
@@ -276,6 +277,13 @@ public function aggiornaTavolata(int $idTavolata, string $titolo, string $data, 
     ";
     $st = $this->db->prepare($q);
     $st->bind_param("sssiis", $titolo, $data, $ora, $maxPersone, $idTavolata, $emailOrg);
+    return $st->execute();
+}
+
+public function setTavolataPrenotata(int $idTavolata): bool {
+    $q = "UPDATE TAVOLATA SET prenotata = 1 WHERE id_tavolata = ?";
+    $st = $this->db->prepare($q);
+    $st->bind_param("i", $idTavolata);
     return $st->execute();
 }
 

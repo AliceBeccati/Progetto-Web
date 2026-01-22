@@ -38,6 +38,7 @@ if ($idTavolo) {
   $ok = $dbh->inserisciPrenotazione($oraInizio, $oraFine, $data, $nPosti, $email, $idTavolo);
 
   if ($ok) {
+    $dbh->setTavolataPrenotata($idTavolata);
     header("Location: utente.php?msg=prenotazione_creata");
     exit;
   }
