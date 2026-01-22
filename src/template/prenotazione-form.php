@@ -32,6 +32,9 @@
                                 <div class="col-6">
                                     <input class="form-control bg-secondary" style="--bs-bg-opacity: .4;"
                                         type="time" id="ora_fine" name="ora_fine" required />
+                                    <div id="ora-error-message" class="invalid-feedback">
+                                        L'orario di fine deve essere successivo all'orario di inizio.
+                                    </div>
                                 </div>
                             </div>
 
