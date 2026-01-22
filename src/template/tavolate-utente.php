@@ -93,7 +93,7 @@ $edit = $templateParams["tavolataEdit"] ?? null;
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
     <div class="modal-header bg-danger text-white">
-      <h5 class="modal-title">Modifica Tavolata</h5>
+      <h3 class="modal-title">Modifica Tavolata</h3>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
     </div>
 

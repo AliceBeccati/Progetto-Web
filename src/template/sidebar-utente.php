@@ -1,10 +1,10 @@
 <div class="text-center mb-4">
     <i class="bi bi-person-circle display-1 text-secondary"></i>
     
-    <h4 class="fw-bold mt-3">
+    <h3 class="fw-bold mt-3">
         <?php echo $_SESSION["user"]["name"]; ?>
-    </h4>
-    
+    </h3>
+
     <p class="text-muted mb-1">
         <?php echo $_SESSION["user"]["email"]; ?>
     </p>
