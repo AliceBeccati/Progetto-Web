@@ -86,10 +86,10 @@
 <section class="bg-dark text-white p-4 rounded text-center">
     <h3 class="fw-bold mb-3">Pronto a iniziare?</h3>
     <p class="mb-3">
-        Effettua il login per accedere alla tua area personale
-        o per gestire tavolate e prenotazioni.
+        Effettua la registrazione per creare la tua area personale
+        e per gestire le tue tavolate e prenotazioni.
     </p>
-    <a href="gestioneLogin.php" class="btn btn-outline-light btn-lg">
-        Vai al Login
+    <a href="registrazione.php" class="btn btn-outline-light btn-lg">
+        Vai alla Registrazione
     </a>
 </section>
