@@ -122,7 +122,7 @@ if (!isset($templateParams["titolo"])) {
     <!-- Offcanvas menu utente -->
     <div class="bg-light offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
         <div class="offcanvas-header">
-            <h3 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h3>
+            <h2 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h2>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 

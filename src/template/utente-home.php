@@ -1,14 +1,14 @@
 <!-- SCHEDE -->
 <div class="row justify-content-center mt-4 g-3">
   <div class="col-md-5">
-    <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Crea una tavolata</h3>
+    <div class="border bg-white p-3 h-100 text-center"> <h2 class="h6 mb-2 fw-bold">Crea una tavolata</h2>
       <p class="text-muted small mb-3">Organizza e gestisci le tue tavolate.</p>
       <a class="btn btn-danger btn-sm" href="tavolate.php">Crea tavolata</a>
     </div>
   </div>
 
   <div class="col-md-5">
-    <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Prenota un tavolo</h3>
+    <div class="border bg-white p-3 h-100 text-center"> <h2 class="h6 mb-2 fw-bold">Prenota un tavolo</h2>
       <p class="text-muted small mb-3">Scegli giorno, ora e numero persone.</p>
       <a class="btn btn-danger btn-sm" href="prenotazioni.php">Prenota tavolo</a>
     </div>
