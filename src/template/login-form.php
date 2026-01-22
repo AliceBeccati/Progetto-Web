@@ -6,8 +6,8 @@
 
 <form action="login.php" method="POST">
     <div class="row justify-content-center mb-5">
-        <div class="col-md-10">
-            <div class="row">
+        <div class="col-md-10 ">
+            <div class="row mt-5">
                 <div class="col-md-8 mx-auto">
                     <section class="bg-secondary border p-4" style="--bs-bg-opacity: .5;">
                         <p>Inserisci le tue credenziali per accedere al sito.</p>
