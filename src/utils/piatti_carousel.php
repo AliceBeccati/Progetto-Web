@@ -4,7 +4,7 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
   $colClass = ($perSlide == 2) ? "col-6" : "col-12 col-md-6 col-lg-4";
   ?>
 
-  <div id="<?php echo $id; ?>" class="carousel slide" data-bs-interval="false">
+  <div id="<?php echo $id; ?>" class="carousel carousel-dark slide" data-bs-interval="false">
 
     <div class="carousel-inner">
 

@@ -1,7 +1,7 @@
 <div class="row justify-content-center mt-4 g-3">
   <div class="col-md-5">
     <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Crea una tavolata</h3>
-      <p class="text-muted small mb-3">Organizza un gruppo e condividi il codice.</p>
+      <p class="text-muted small mb-3">Organizza e gestisci le tue tavolate.</p>
       <a class="btn btn-danger btn-sm" href="tavolate.php">Crea tavolata</a>
     </div>
   </div>
@@ -271,7 +271,7 @@
     <?php if(!empty($templateParams["piatti"])): ?>
     <?php $piatti = $templateParams["piatti"]; ?>
 
-    <div class="d-md-none"><?php renderPiattiCarousel("piattiCarouselMobile", $piatti, 2); ?></div>
+    <div class="d-md-none"><?php renderPiattiCarousel("piattiCarouselMobile", $piatti, 1); ?></div>
     <div class="d-none d-md-block"><?php renderPiattiCarousel("piattiCarouselDesktop", $piatti, 3); ?></div>
 
   <?php else: ?>
