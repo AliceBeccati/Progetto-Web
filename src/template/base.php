@@ -25,16 +25,15 @@ if (!isset($templateParams["titolo"])) {
 
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <header class="bg-danger text-white shadow py-4">
-        <div class="container text-center">
-            <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
-                <h1 class="display-5 fw-bold">MensaMate</h1>
+    <header class="bg-danger text-white shadow-sm py-2">
+        <div class="container d-flex flex-column align-items-center">
+            <a href="index.php" class="text-decoration-none text-white">
+                <h1 class="fw-bold mb-0 fs-2">MensaMate</h1>
             </a>
-            <p class="lead mb-0 opacity-45">
-                La tua tavolata in compagnia
-            </p>
+            <p class="mb-0 fs-6 opacity-75">La tua tavolata in compagnia</p>
         </div>
     </header>
+
     <?php if (isset($templateParams["navbar"])): ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
