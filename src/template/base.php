@@ -31,7 +31,7 @@ if (!isset($templateParams["titolo"])) {
             <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
                 <h1>🍽️ MensaMate</h1>
             </a>
-            <p class="mb-0 opacity-75">
+            <p class="mb-0 opacity-45">
                 La tua tavolata in compagnia
             </p>
         </div>
@@ -55,7 +55,7 @@ if (!isset($templateParams["titolo"])) {
 
                 <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                     <div class="d-flex align-items-center ms-auto d-lg-none">
-                        <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
+                        <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
                             <i class="bi bi-person-circle fs-4"></i>
                         </button>
                     </div>
@@ -104,7 +104,7 @@ if (!isset($templateParams["titolo"])) {
 
                     <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                         <div class="d-none d-lg-flex align-items-center gap-4 ms-auto">
-                            <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-controls="menuUtente">
+                            <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </button>
                         </div>
@@ -129,7 +129,7 @@ if (!isset($templateParams["titolo"])) {
     <!-- Offcanvas menu utente -->
     <div class="bg-light offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h5>
+            <h3 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h3>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 

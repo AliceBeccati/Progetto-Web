@@ -1,17 +1,17 @@
 <div class="row justify-content-center mt-4 g-3">
     <div class="col-md-5">
-        <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Gestisci la sala</h3>
-        <p class="text-muted small mb-3">Gestisci e archivia le prenotazioni dei tavoli.</p>
-        <a class="btn btn-danger" href="gestioneSala.php">Gestione sala</a>
-        </div>
-    </div>
-
-    <div class="col-md-5">
-        <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Aggiungi un nuovo piatto</h3>
+        <div class="border bg-white p-3 h-100 text-center"> <h2 class="h6 mb-2 fw-bold">Aggiungi un nuovo piatto</h2>
             <p class="text-muted small mb-3">Aggiungi un nuovo piatto al menu del giorno.</p>
             <a href="inserisci-piatto.php" class="btn btn-danger">
                 <i class=" bi bi-plus-circle-fill"></i> Aggiungi Piatto
             </a>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="border bg-white p-3 h-100 text-center"> <h2 class="h6 mb-2 fw-bold">Gestisci la sala</h2>
+        <p class="text-muted small mb-3">Gestisci e archivia le prenotazioni dei tavoli.</p>
+        <a class="btn btn-danger" href="gestioneSala.php">Gestione sala</a>
         </div>
     </div>
 </div>
@@ -34,12 +34,12 @@
                             <div class="text-center mb-3">
                                 <img src="img/<?php echo $piatto['foto']; ?>" alt="<?php echo $piatto['nome']; ?>" style="max-height: 150px; object-fit: cover; width: 100%;">
                             </div>
-                            <h2 class="h4"><?php echo $piatto['nome']; ?></h2>
+                            <h3 class="h3"><?php echo $piatto['nome']; ?></h3>
                         </header>
                         
                         <section class="flex-grow-1">
                             <p class="text-muted"><?php echo $piatto['descrizione']; ?></p>
-                            <p class="fw-bold text-danger fs-5">€ <?php echo $piatto['prezzo']; ?></p>
+                            <h4 class="h4 text-danger"><?php echo $piatto['prezzo']; ?>€</h4>
                         </section>
                         
                         <footer class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center">
@@ -74,11 +74,11 @@
             ?>
 
             <!-- creazione modal modifica piatto -->
-            <div class="modal fade" id="modalModifica" tabindex="-1" aria-labelledby="modalModificaLabel" aria-hidden="true">
+            <div class="modal fade" id="modalModifica" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-dark text-white">
-                            <h5 class="modal-title">Modifica Piatto</h5>
+                            <h3 class="modal-title">Modifica Piatto</h3>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="admin.php" method="POST" enctype="multipart/form-data">
