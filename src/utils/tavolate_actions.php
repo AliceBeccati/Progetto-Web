@@ -39,7 +39,7 @@ function renderTavolataAction(array $t, string $variant = "desktop"): void
         echo '<form method="post" action="prenota-da-tavolata.php" class="d-inline">
                 <input type="hidden" name="id_tavolata" value="'.$id.'">
                 <button class="'.$btnDark.'" type="submit">Prenota</button>
-              </form>';
+            </form>';
         return;
     }
 
