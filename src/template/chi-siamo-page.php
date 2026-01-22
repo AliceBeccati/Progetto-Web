@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h5 class="fw-bold mb-2">🍽 Qualità e varietà</h5>
+                            <h5 class="fw-bold mb-2">Qualità e varietà</h5>
                             <p class="mb-0">
                                 Menù pensati per essere equilibrati e vari, con attenzione alle preferenze alimentari
                                 (vegetariano, vegano, senza glutine, senza lattosio e opzioni “healthy”).
@@ -35,7 +35,7 @@
                 <div class="col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h5 class="fw-bold mb-2">🎓 Focus sugli studenti</h5>
+                            <h5 class="fw-bold mb-2">Focus sugli studenti</h5>
                             <p class="mb-0">
                                 Tempi rapidi, prenotazioni più semplici e informazioni chiare: vogliamo venirti incontro
                                 per rendere la pausa pranzo più comoda, senza stress.
@@ -47,7 +47,7 @@
 
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-2">🤝 Più socialità, più campus</h5>
+                    <h5 class="fw-bold mb-2">Più socialità, più campus</h5>
                     <p class="mb-0">
                         Con <strong>MensaMate</strong> vogliamo fare un passo in più: non solo pranzo, ma anche
                         <strong>occasioni sociali</strong>. Le <strong>tavolate</strong> nascono per aiutare a conoscersi,

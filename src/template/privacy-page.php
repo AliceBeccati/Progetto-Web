@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h5 class="fw-bold mb-2">🚫 Nessun uso a scopo di lucro</h5>
+                            <h5 class="fw-bold mb-2">Nessun uso a scopo di lucro</h5>
                             <p class="mb-0">
                                 I dati non vengono utilizzati per attività commerciali o pubblicitarie e non vengono
                                 venduti o sfruttati per profitto.
@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h5 class="fw-bold mb-2">🤝 Nessuna condivisione con terzi</h5>
+                            <h5 class="fw-bold mb-2">Nessuna condivisione con terzi</h5>
                             <p class="mb-0">
                                 I dati non vengono ceduti, comunicati o condivisi con soggetti esterni. Rimangono all’interno
                                 dell’applicazione e vengono trattati solo per finalità funzionali.
@@ -61,7 +61,7 @@
 
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-2">🔒 Sicurezza e comunicazioni cifrate</h5>
+                    <h5 class="fw-bold mb-2">Sicurezza e comunicazioni cifrate</h5>
                     <p class="mb-0">
                         Le comunicazioni con il nostro database avvengono tramite connessioni <strong>cifrate e sicure (TLS/SSL)</strong>.
                         Adottiamo misure tecniche per ridurre il rischio di accessi non autorizzati e proteggere i dati.
