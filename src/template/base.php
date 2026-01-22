@@ -26,23 +26,16 @@ if (!isset($templateParams["titolo"])) {
 
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <header class="bg-danger text-white">
-        <div class="container py-3 text-center">
-            <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
-                <h1>🍽️ MensaMate</h1>
+   <header class="header-immagine text-white shadow">
+        <div class="container py-5 text-center"> <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
+                <h1 class="display-4 fw-bold shadow-text">MensaMate</h1>
             </a>
-            <p class="mb-0 opacity-75">
+            <p class="lead mb-0 opacity-100 shadow-text">
                 La tua tavolata in compagnia
             </p>
         </div>
     </header>
-
-    <?php if (isset($templateParams["titolo"]) && $templateParams["titolo"] === "Login"): ?>
-
-                <div class="bg-dark text-white text-center mb-4 py-2">
-                    <h2 class="fw-bold m-0">Login</h2>
-                </div>
-    <?php else: ?>
+    <?php if (isset($templateParams["navbar"])): ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
 
