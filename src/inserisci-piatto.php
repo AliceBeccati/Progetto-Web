@@ -6,6 +6,7 @@ if (!isset($_SESSION["user"])) {
 }
 
 $templateParams["titolo"] = "Inserisci Nuovo Piatto";
+$templateParams["navbar"] = "admin";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
