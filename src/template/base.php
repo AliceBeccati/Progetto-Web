@@ -42,13 +42,13 @@ if (!isset($templateParams["titolo"])) {
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                         aria-controls="mainNavbar" aria-expanded="false" aria-label="Apri menu">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><!-- --></span>
                 </button>
 
                 <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                     <div class="d-flex align-items-center ms-auto d-lg-none">
                         <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
-                            <i class="bi bi-person-circle fs-4"></i>
+                            <i class="bi bi-person-circle fs-4"><!-- --></i>
                         </button>
                     </div>
                 <?php endif; ?>
@@ -97,7 +97,8 @@ if (!isset($templateParams["titolo"])) {
                     <?php if (isset($templateParams["navbar"]) && ($templateParams["navbar"] === "user" || $templateParams["navbar"] === "admin")): ?>
                         <div class="d-none d-lg-flex align-items-center gap-4 ms-auto">
                             <button class="btn btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUtente" aria-label="menuUtente">
-                                <i class="bi bi-person-circle fs-4"></i>
+                                <i class="bi bi-person-circle fs-4"><!-- --></i>
+                                <!-- -->
                             </button>
                         </div>
                     <?php endif; ?>
@@ -122,7 +123,7 @@ if (!isset($templateParams["titolo"])) {
     <div class="bg-light offcanvas offcanvas-end" tabindex="-1" id="menuUtente" aria-labelledby="menuUtenteLabel">
         <div class="offcanvas-header">
             <h2 class="offcanvas-title fw-bold" id="menuUtenteLabel">Menu Utente</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><!-- --></button>
         </div>
 
         <div class="offcanvas-body">
@@ -141,7 +142,7 @@ if (!isset($templateParams["titolo"])) {
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
             <p class="mb-1">MensaMate – Progetto Web</p>
-            <small>Creato da Alice&Matteo.srl • <?php echo date("Y"); ?></small>
+            <small>Creato da Alice&amp;Matteo.srl • <?php echo date("Y"); ?></small>
         </div>
     </footer>
 

@@ -39,15 +39,18 @@ function renderPiattiCarousel($id, $piatti, $perSlide) {
           data-bs-target="#<?php echo $id; ?>"
           data-bs-slide="prev"
           aria-label="Slide precedente"> <span class="bg-white rounded-circle p-2 d-inline-flex shadow-sm" aria-hidden="true">
-        <span class="carousel-control-prev-icon"></span>
+        <span class="carousel-control-prev-icon"><!-- --></span>
+        <!-- -->
     </span>
   </button>
   <button class="carousel-control-next opacity-20" type="button"
           data-bs-target="#<?php echo $id; ?>"
           data-bs-slide="next"
           aria-label="Slide successiva"> <span class="bg-white rounded-circle p-2 d-inline-flex shadow-sm" aria-hidden="true">
-          <span class="carousel-control-next-icon"></span>
+          <span class="carousel-control-next-icon"><!-- --></span>
+          <!-- -->
       </span>
+  </button>
 <?php endif; ?>
 
   </div>

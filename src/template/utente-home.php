@@ -67,6 +67,7 @@
               <div class="fw-semibold"><?php echo $tavolata["titolo"]; ?></div>
               <span class="badge bg-light text-dark border">
                 <?php echo substr($tavolata["ora"], 0, 5); ?>
+                <!-- -->
               </span>
             </div>
 
@@ -77,6 +78,7 @@
             <div class="d-flex justify-content-between align-items-center mt-2">
               <span class="badge <?php echo $aperta ? 'bg-success' : 'bg-secondary'; ?>">
                 <?php echo $tavolata["stato"]; ?>
+                <!-- -->
               </span>
               <div class="fw-semibold">
                 <?php echo (int)$tavolata["num_persone_partecipanti"]; ?> / <?php echo (int)$tavolata["max_persone"]; ?>
@@ -130,6 +132,7 @@
                 <td>
                   <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
                     <?php echo ucfirst($pren["stato"]); ?>
+                    <!-- -->
                   </span>
                 </td>
                 <td class="text-end">
@@ -137,7 +140,7 @@
                     <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
                     <input type="hidden" name="azione" value="elimina prenotazione">
                     <button type="submit" class="btn btn-sm btn-outline-danger">
-                      <i class="bi bi-trash"></i> Elimina
+                      <i class="bi bi-trash"><!-- --></i> Elimina
                     </button>
                   </form>
                 </td>
@@ -152,26 +155,27 @@
         <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
           <div class="border bg-white p-3 mb-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?></span>
+              <span class="fw-bold"><?php echo date("d/m/Y", strtotime($pren["data"])); ?><!-- --></span>
               <span class="badge <?php echo ($pren['stato'] === 'attiva' ? 'bg-success' : 'bg-secondary'); ?>">
                 <?php echo ucfirst($pren["stato"]); ?>
+                <!-- -->
               </span>
             </div>
             <div class="text-muted small">
-              <i class="bi bi-clock"></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
+              <i class="bi bi-clock"><!-- --></i> <?php echo substr($pren["ora_inizio"], 0, 5); ?> - <?php echo substr($pren["ora_fine"], 0, 5); ?>
             </div>
             <div class="text-muted small">
-              <i class="bi bi-people"></i> <?php echo (int)$pren["nPosti"]; ?> persone
+              <i class="bi bi-people"><!-- --></i> <?php echo (int)$pren["nPosti"]; ?> persone
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-              <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?></span>
+              <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?><!----></span>
 
               <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
                 <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
                 <input type="hidden" name="azione" value="elimina prenotazione">
                 <button type="submit" class="btn btn-sm btn-outline-danger">
-                  <i class="bi bi-trash"></i> Elimina
+                  <i class="bi bi-trash"><!-- --></i> Elimina
                 </button>
               </form>
             </div>

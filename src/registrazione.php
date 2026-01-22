@@ -2,6 +2,7 @@
 require_once 'bootstrap.php';
 
 $templateParams["titolo"] = "Registrazione";
+$templateParams["navbar"] = "public";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = $_POST["email"] ?? "";

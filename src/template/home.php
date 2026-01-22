@@ -32,13 +32,13 @@
                     <h2 class="fw-bold mb-3">Perché usare MensaMate?</h2>
                     <ul class="list-unstyled text-start">
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Prenota tavoli facilmente</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Prenota tavoli facilmente</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Partecipa a tavolate tematiche</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Partecipa a tavolate tematiche</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Scopri piatti del giorno</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Scopri piatti del giorno</li>
                         <li class="mb-2">
-                            <i class="bi bi-check-circle-fill text-success"></i> Filtra per preferenze alimentari</li>
+                            <i class="bi bi-check-circle-fill text-success"><!-- --></i> Filtra per preferenze alimentari</li>
                     </ul>
                 </div>
             </div>
@@ -86,10 +86,10 @@
 <section class="bg-dark text-white p-4 rounded text-center">
     <h3 class="fw-bold mb-3">Pronto a iniziare?</h3>
     <p class="mb-3">
-        Effettua il login per accedere alla tua area personale
-        o per gestire tavolate e prenotazioni.
+        Effettua la registrazione per creare la tua area personale
+        e per gestire le tue tavolate e prenotazioni.
     </p>
-    <a href="gestioneLogin.php" class="btn btn-outline-light btn-lg">
-        Vai al Login
+    <a href="registrazione.php" class="btn btn-outline-light btn-lg">
+        Vai alla Registrazione
     </a>
 </section>

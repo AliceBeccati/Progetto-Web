@@ -1,5 +1,5 @@
 <div class="text-center mb-4">
-    <i class="bi bi-person-circle display-1 text-secondary"></i>
+    <i class="bi bi-person-circle display-1 text-secondary"><!-- --></i>
     
     <h3 class="fw-bold mt-3">
         <?php echo $_SESSION["user"]["name"]; ?>
@@ -24,5 +24,5 @@
 <?php endif; ?>
 
 <a href="gestioneLogin.php?logout=1" class="btn btn-danger w-100">
-    <i class="bi bi-box-arrow-right"></i> Logout
+    <i class="bi bi-box-arrow-right"><!-- --></i> Logout
 </a>
