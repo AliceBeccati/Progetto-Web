@@ -3,7 +3,7 @@
         <div class="border bg-white p-3 h-100 text-center"> <h2 class="h6 mb-2 fw-bold">Aggiungi un nuovo piatto</h2>
             <p class="text-muted small mb-3">Aggiungi un nuovo piatto al menu del giorno.</p>
             <a href="inserisci-piatto.php" class="btn btn-danger">
-                <i class=" bi bi-plus-circle-fill"></i> Aggiungi Piatto
+                <i class=" bi bi-plus-circle-fill"><!-- --></i> Aggiungi Piatto
             </a>
         </div>
     </div>
@@ -53,7 +53,7 @@
                                 <input type="hidden" name="id_piatto" value="<?php echo $piatto['id_piatto']; ?>">
                                 <input type="hidden" name="azione" value="elimina">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i> Elimina
+                                    <i class="bi bi-trash"><!-- --></i> Elimina
                                 </button>
                             </form>
 
@@ -79,7 +79,7 @@
                     <div class="modal-content">
                         <div class="modal-header bg-dark text-white">
                             <h3 class="modal-title">Modifica Piatto</h3>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"><!-- --></button>
                         </div>
                         <form action="admin.php" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
