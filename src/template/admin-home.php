@@ -42,18 +42,20 @@
                             <h4 class="h4 text-danger"><?php echo $piatto['prezzo']; ?>€</h4>
                         </section>
                         
-                        <footer class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center">
+                        <footer class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center gap-2">
                             
-                            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalModifica"
-                                    data-bs-id="<?php echo $piatto['id_piatto']; ?>">
+                            <button type="button" class="btn btn-outline-dark flex-fill" data-bs-toggle="modal" data-bs-target="#modalModifica"
+                                    data-bs-id="<?php echo $piatto['id_piatto']; ?>"
+                                    aria-label="Modifica piatto <?php echo $piatto['nome']; ?>">
                                 Modifica
                             </button>
 
-                            <form action="admin.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare <?php echo $piatto['nome']; ?>?');">
+                            <form action="admin.php" method="POST" class="flex-fill">
                                 <input type="hidden" name="id_piatto" value="<?php echo $piatto['id_piatto']; ?>">
                                 <input type="hidden" name="azione" value="elimina">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"><!-- --></i> Elimina
+                                <button type="submit" class="btn btn-outline-danger w-100"
+                                        aria-label="Elimina piatto <?php echo $piatto['nome']; ?>">
+                                    <i class="bi bi-trash"></i> Elimina
                                 </button>
                             </form>
 

@@ -30,7 +30,7 @@ if (!isset($templateParams["titolo"])) {
             <a href="index.php" class="text-decoration-none text-white">
                 <h1 class="fw-bold mb-0 fs-2">MensaMate</h1>
             </a>
-            <p class="mb-0 fs-6 opacity-75">La tua tavolata in compagnia</p>
+            <p class="mb-0 fs-6 opacity-45">La tua tavolata in compagnia</p>
         </div>
     </header>
 

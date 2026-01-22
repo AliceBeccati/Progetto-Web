@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-md-5 text-center">
-                                    <img src="img/logo.jpg" alt="Logo MensaMate" class="img-fluid mb-3 rounded" style="height: auto; object-fit: cover; width: 60%;">
+                <img src="img/logo.jpg" alt="Logo MensaMate" class="img-fluid mb-3 mt-3 rounded" style="height: auto; object-fit: cover; width: 60%;">
                 <div class="p-4 bg-white border rounded shadow-sm">
                     <h2 class="fw-bold mb-3">Perché usare MensaMate?</h2>
                     <ul class="list-unstyled text-start">

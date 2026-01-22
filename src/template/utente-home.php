@@ -136,7 +136,7 @@
                   </span>
                 </td>
                 <td class="text-end">
-                  <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+                  <form action="utente.php" method="POST">
                     <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
                     <input type="hidden" name="azione" value="elimina prenotazione">
                     <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -171,7 +171,7 @@
             <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
               <span class="fw-semibold small text-primary">Tavolo <?php echo $pren["id_tavolo"]; ?><!----></span>
 
-              <form action="utente.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare la prenotazione?');">
+              <form action="utente.php" method="POST">
                 <input type="hidden" name="id_pren" value="<?php echo (int)$pren["id_pren"]; ?>">
                 <input type="hidden" name="azione" value="elimina prenotazione">
                 <button type="submit" class="btn btn-sm btn-outline-danger">
