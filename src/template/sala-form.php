@@ -34,7 +34,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="gestioneSala.php" method="POST" onsubmit="return confirm('Sei sicuro?');">
+                                    <form action="gestioneSala.php" method="POST">
                                         <input type="hidden" name="id_pren" value="<?php echo $pren["id_pren"]; ?>">
                                         <input type="hidden" name="azione" value="elimina prenotazione">
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Elimina</button>
