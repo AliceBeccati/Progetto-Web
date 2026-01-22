@@ -21,16 +21,16 @@ if (!isset($templateParams["titolo"])) {
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="bg-light d-flex flex-column min-vh-100">
 
-   <header class="header-immagine text-white shadow">
-        <div class="container py-5 text-center"> <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
-                <h1 class="display-4 fw-bold shadow-text">MensaMate</h1>
+    <header class="bg-danger text-white shadow py-4">
+        <div class="container text-center">
+            <a href="index.php" class="fw-bold mb-1 text-decoration-none text-white">
+                <h1 class="display-5 fw-bold">MensaMate</h1>
             </a>
-            <p class="lead mb-0 opacity-100 shadow-text">
+            <p class="lead mb-0 opacity-75">
                 La tua tavolata in compagnia
             </p>
         </div>
