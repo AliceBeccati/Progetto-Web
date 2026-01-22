@@ -22,27 +22,27 @@ $edit = $templateParams["tavolataEdit"] ?? null;
         <?php endif; ?>
 
         <div class="col-12">
-          <label class="form-label">Titolo</label>
-          <input class="form-control" name="titolo" required value="<?php echo $edit["titolo"] ?? ""; ?>">
+            <label class="form-label" for="titolo">Titolo</label>
+            <input class="form-control" id="titolo" name="titolo" required value="<?php echo $edit["titolo"] ?? ""; ?>">
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Data</label>
-          <input type="date" class="form-control" name="data" required value="<?php echo $edit["data"] ?? ""; ?>">
+            <label class="form-label" for="data_tav">Data</label>
+            <input type="date" class="form-control" id="data_tav" name="data" required value="<?php echo $edit["data"] ?? ""; ?>">
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Ora</label>
-          <input type="time" class="form-control" name="ora" required value="<?php echo isset($edit["ora"]) ? substr($edit["ora"], 0, 5) : ""; ?>">
+            <label class="form-label" for="ora_tav">Ora</label>
+            <input type="time" class="form-control" id="ora_tav" name="ora" required value="<?php echo isset($edit["ora"]) ? substr($edit["ora"], 0, 5) : ""; ?>">
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Max persone</label>
-          <input type="number" min="1" class="form-control" name="max_persone" required value="<?php echo $edit["max_persone"] ?? 2; ?>">
+            <label class="form-label" for="max_p">Max persone</label>
+            <input type="number" min="1" class="form-control" id="max_p" name="max_persone" required value="<?php echo $edit["max_persone"] ?? 2; ?>">
         </div>
 
         <div class="col-12 d-flex gap-2">
-          <button class="btn btn-dark" type="submit">
+          <button class="btn btn-danger" type="submit">
             <?php echo $edit ? "Salva modifiche" : "Crea tavolata"; ?>
           </button>
 
@@ -92,34 +92,34 @@ $edit = $templateParams["tavolataEdit"] ?? null;
 <div class="modal fade" id="modalModificaTavolata" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title">Modifica Tavolata</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
+    <div class="modal-header bg-danger text-white">
+      <h5 class="modal-title">Modifica Tavolata</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+    </div>
 
       <form action="tavolate.php" method="POST">
         <div class="modal-body">
           <input type="hidden" name="id_tavolata" id="t-edit-id">
 
           <div class="mb-3">
-            <label class="form-label">Titolo</label>
-            <input class="form-control" name="titolo" id="t-edit-titolo" required>
+              <label class="form-label" for="t-edit-titolo">Titolo</label>
+              <input class="form-control" name="titolo" id="t-edit-titolo" required>
           </div>
 
           <div class="row g-2">
-            <div class="col-md-6">
-              <label class="form-label">Data</label>
-              <input type="date" class="form-control" name="data" id="t-edit-data" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Ora</label>
-              <input type="time" class="form-control" name="ora" id="t-edit-ora" required>
-            </div>
+              <div class="col-md-6">
+                  <label class="form-label" for="t-edit-data">Data</label>
+                  <input type="date" class="form-control" name="data" id="t-edit-data" required>
+              </div>
+              <div class="col-md-6">
+                  <label class="form-label" for="t-edit-ora">Ora</label>
+                  <input type="time" class="form-control" name="ora" id="t-edit-ora" required>
+              </div>
           </div>
 
           <div class="mt-3">
-            <label class="form-label">Max persone</label>
-            <input type="number" min="1" class="form-control" name="max_persone" id="t-edit-max" required>
+              <label class="form-label" for="t-edit-max">Max persone</label>
+              <input type="number" min="1" class="form-control" name="max_persone" id="t-edit-max" required>
           </div>
         </div>
 
