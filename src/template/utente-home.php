@@ -1,3 +1,4 @@
+<!-- SCHEDE -->
 <div class="row justify-content-center mt-4 g-3">
   <div class="col-md-5">
     <div class="border bg-white p-3 h-100 text-center"> <h3 class="h6 mb-2 fw-bold">Crea una tavolata</h3>
@@ -14,8 +15,9 @@
   </div>
 </div>
 
-<?php require_once __DIR__ . "/../utils/tavolate_actions.php"; ?>
 <!-- TAVOLATE DI OGGI -->
+<?php require_once __DIR__ . "/../utils/tavolate_actions.php"; ?>
+
 <div class="row justify-content-center mt-4">
   <div class="col-10">
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -24,7 +26,7 @@
 
     <?php if (!empty($templateParams["tavolate"])): ?>
 
-      <!-- DESKTOP/TABLET -->
+      <!-- desktop + tablet -->
       <div class="d-none d-md-block">
         <table class="table table-hover align-middle mb-0">
           <thead>
@@ -54,7 +56,7 @@
         </table>
       </div>
 
-      <!-- MOBILE -->
+      <!-- mobile -->
       <div class="d-md-none">
         <?php foreach ($templateParams["tavolate"] as $tavolata): ?>
           <?php
@@ -105,7 +107,7 @@
 
     <?php if(isset($templateParams["mie_prenotazioni"]) && count($templateParams["mie_prenotazioni"]) > 0): ?>
 
-      <!-- DESKTOP/TABLET -->
+      <!-- desktop + tablet -->
       <div class="d-none d-md-block">
         <table class="table table-hover align-middle mb-0">
           <thead>
@@ -145,7 +147,7 @@
         </table>
       </div>
 
-      <!-- MOBILE -->
+      <!-- mobile -->
       <div class="d-md-none">
         <?php foreach($templateParams["mie_prenotazioni"] as $pren): ?>
           <div class="border bg-white p-3 mb-3">
@@ -185,8 +187,6 @@
 
   </div>
 </div>
-
-
 
 <!-- PIATTI DEL GIORNO -->
 <?php require_once __DIR__ . "/../utils/piatti_carousel.php"; ?>
